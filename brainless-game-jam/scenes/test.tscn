@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy2qf048w8wuf"]
+
+[ext_resource type="PackedScene" uid="uid://cgbxshykbgxn8" path="res://scenes/player.tscn" id="1_bl13t"]
+[ext_resource type="PackedScene" uid="uid://c568iwthfdvmt" path="res://scenes/dialogueSystem/dialogue_area.tscn" id="2_iyx0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
+size = Vector2(1152, 314)
+
+[node name="test" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bl13t")]
+position = Vector2(580, 161)
+
+[node name="DialogueAreaBOTTOM" parent="." instance=ExtResource("2_iyx0m")]
+position = Vector2(576, 491)
+
+[node name="CollisionShape2D" parent="DialogueAreaBOTTOM" index="0"]
+shape = SubResource("RectangleShape2D_74lek")
+
+[editable path="DialogueAreaBOTTOM"]
