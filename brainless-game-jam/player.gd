@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Player
 
 #movement taken from godot intro to 2d tutorial
 # https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html
@@ -10,7 +10,7 @@ extends CharacterBody2D
 
 @export var speed = 400
 @export var rotation_speed = 1.5
-@export var bullet : PackedScene
+#@export var bullet : PackedScene
 @export var fire_delay : float = 0.2
 
 var rotation_direction = 0
@@ -32,9 +32,9 @@ func _physics_process(delta):
 	move_and_slide()
 	if is_shooting and bullet_timer.is_stopped():
 		bullet_timer.start(fire_delay)
-		shoot()
-	
-func shoot():
-	var b = bullet.instantiate()
-	owner.add_child(b)
-	b.transform = %BulletSpawnPoint.global_transform
+		spawn_bullet(bullet_test_data, %BulletSpawnPoint)
+	#
+#func shoot():
+	#var b = bullet.instantiate()
+	#owner.add_child(b)
+	#b.transform = %BulletSpawnPoint.global_transform
