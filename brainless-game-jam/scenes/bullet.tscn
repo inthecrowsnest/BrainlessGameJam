@@ -13,6 +13,7 @@ script = ExtResource("1_y25gk")
 BulletDataFile = ExtResource("2_l5glv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.8488253, 0.23920968, 0.3111915, 1)
 texture = ExtResource("1_mkf8s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

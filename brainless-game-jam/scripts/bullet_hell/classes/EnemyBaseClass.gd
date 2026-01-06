@@ -15,13 +15,14 @@ var bullet_file = preload("res://scenes/bullet.tscn")
 func setup_enemy_data(data):
 	EnemyDataFile = data 
 
-func spawn_bullet(data):
+func spawn_bullet(data, i ):
 	var bullet_data = data
 	var spawnedBullet = bullet_file.instantiate()
 	spawnedBullet.setup_bullet_data(bullet_data)
-	spawnedBullet.velocity = Vector2(spawnedBullet.speed, 0).rotated(deg_to_rad(spawnedBullet.direction))
-	spawnedBullet.global_position = global_position  # Get parent global position to spawn bullet there
-	get_parent().add_child(spawnedBullet)
+	get_parent().get_node("Enemy").add_child(spawnedBullet)
+	spawnedBullet.global_position = global_position
+	
+	
 	
 	
 	

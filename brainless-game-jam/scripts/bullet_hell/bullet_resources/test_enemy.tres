@@ -6,4 +6,5 @@
 script = ExtResource("1_gvad8")
 id = "test"
 name = "Ugly enemy"
+bullets_per_shot = 10
 metadata/_custom_type_script = "uid://6jlwahgys00h"

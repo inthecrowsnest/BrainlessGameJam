@@ -2,7 +2,7 @@ extends Bullet
 
 var speed = 100
 var direction := 60
-var duration = 5
+var duration = 10
 var velocity : Vector2 = Vector2(1,0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

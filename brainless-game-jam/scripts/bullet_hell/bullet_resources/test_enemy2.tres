@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dnpt16v14ncyy"]
+
+[ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_0jxe5"]
+
+[resource]
+script = ExtResource("1_0jxe5")
+id = "test2"
+name = "Ugly Godot 2"
+bullets_per_shot = 20
+metadata/_custom_type_script = "uid://6jlwahgys00h"
