@@ -20,8 +20,8 @@ SignalBus="*res://scripts/singletons/SignalBus.gd"
 
 [global_group]
 
-Player=""
-Enemies=""
+player=""
+enemies=""
 
 [input]
 

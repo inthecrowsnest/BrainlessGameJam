@@ -1,22 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dolnox7f8ctia"]
+[gd_scene load_steps=5 format=3 uid="uid://dolnox7f8ctia"]
 
 [ext_resource type="Texture2D" uid="uid://bwm0qk3vqs1n7" path="res://assets/icon.svg" id="1_mkf8s"]
-[ext_resource type="Script" uid="uid://chvjjnei4feyg" path="res://scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Script" uid="uid://b0irign7kil7t" path="res://scripts/bullet_hell/bullet.gd" id="1_y25gk"]
+[ext_resource type="Resource" uid="uid://bdxlhmqw4ujgy" path="res://scripts/bullet_hell/bullet_resources/test_bullet.tres" id="2_l5glv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
-size = Vector2(14, 13)
+size = Vector2(122, 114.5)
 
-[node name="bullet" type="Area2D"]
+[node name="Bullet" type="Area2D"]
+scale = Vector2(0.41236377, 0.41236377)
 script = ExtResource("1_y25gk")
-speed = 900
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_y25gk")
+BulletDataFile = ExtResource("2_l5glv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 1, 1)
-scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_mkf8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_y25gk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
