@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgbxshykbgxn8"]
+[gd_scene load_steps=5 format=3 uid="uid://cgbxshykbgxn8"]
 
 [ext_resource type="Texture2D" uid="uid://bwm0qk3vqs1n7" path="res://assets/icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://113elroklowj" path="res://player.gd" id="1_g2els"]
-[ext_resource type="PackedScene" uid="uid://dolnox7f8ctia" path="res://scenes/bullet.tscn" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(124, 126)
@@ -14,7 +13,6 @@ size = Vector2(128, 129)
 script = ExtResource("1_g2els")
 speed = 800
 rotation_speed = 3.0
-bullet = ExtResource("2_qhqgy")
 
 [node name="DialogueInteractionArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -33,7 +31,7 @@ shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(72, 0)
+position = Vector2(70, 0)
 scale = Vector2(2, 2)
 gizmo_extents = 34.5
 

@@ -6,5 +6,5 @@
 script = ExtResource("1_0jxe5")
 id = "test2"
 name = "Ugly Godot 2"
-bullets_per_shot = 20
+bullets_per_shot = 10
 metadata/_custom_type_script = "uid://6jlwahgys00h"
