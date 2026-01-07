@@ -17,18 +17,21 @@ scale = Vector2(0.274545, 0.274545)
 [node name="Enemy" parent="GameplayWorld" instance=ExtResource("1_arcc2")]
 position = Vector2(210, 375)
 scale = Vector2(0.25, 0.25)
-rotation_speed = 25
+rotation_speed = 180.0
+shot_delay = 0.5
 EnemyDataFile = ExtResource("3_ml0hh")
 
 [node name="Enemy2" parent="GameplayWorld" instance=ExtResource("1_arcc2")]
 position = Vector2(570, 372)
 scale = Vector2(0.25, 0.25)
-rotation_speed = 45
+rotation_speed = 45.0
+shot_delay = 1.5
 EnemyDataFile = ExtResource("5_dndny")
 
 [node name="Enemy3" parent="GameplayWorld" instance=ExtResource("1_arcc2")]
 position = Vector2(976, 374)
 scale = Vector2(0.25, 0.25)
+shot_delay = 2.0
 EnemyDataFile = ExtResource("4_uknch")
 
 [node name="UI" type="Control" parent="."]

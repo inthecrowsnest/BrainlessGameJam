@@ -1,5 +1,5 @@
 # Base class for all enemy instances
-extends Node2D
+extends CharacterBody2D
 class_name Enemy
 
 @export var EnemyDataFile : EnemyData 
@@ -16,13 +16,12 @@ var bullet_file = preload("res://scenes/bullet.tscn")
 func setup_enemy_data(data):
 	EnemyDataFile = data 
 
-# TODO:
+
 # this function will take the amount of bullets the character will spawn and set a marker group up 
 # equadistant from each other. since they will be nodes, they will rotate with the enemy,
 # which will allow for directional shooting
-
-# seems to be working
 func setup_bullet_spawns(bullets_per_shot, marker_group, enemy):
+	print(enemy, enemy.position, radius)
 	var rad_vector = enemy.position * radius
 	for i in bullets_per_shot:
 		var marker = Marker2D.new()	
@@ -31,7 +30,6 @@ func setup_bullet_spawns(bullets_per_shot, marker_group, enemy):
 		marker.rotation = rad_vector.angle()
 		rad_vector = rad_vector.rotated(2*PI/bullets_per_shot)
 
-# TODO:
 # will spawn a bullet for every marker in the enemies marker group (made from
 # setup_bullet_spawns)
 func spawn_bullet(data, marker_group):
@@ -41,7 +39,13 @@ func spawn_bullet(data, marker_group):
 		spawnedBullet.setup_bullet_data(bullet_data)
 		get_parent().add_child(spawnedBullet)
 		spawnedBullet.transform = marker.global_transform
+		spawnedBullet.bullet_owner = 'enemies'
 	
+func hurt(damage):
+	EnemyDataFile.health -= damage
+	
+	if EnemyDataFile.health <= 0:
+		self.queue_free()
 	
 	
 	
