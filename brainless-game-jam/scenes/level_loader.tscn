@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt81lmmtwtaor"]
+
+[ext_resource type="Script" uid="uid://blt47em1rcsmi" path="res://scripts/level_loader.gd" id="1_mkpd6"]
+[ext_resource type="PackedScene" uid="uid://82yi2qk3yblx" path="res://scenes/bullet_hell_demo.tscn" id="2_04v6o"]
+
+[node name="level_loader" type="Node"]
+script = ExtResource("1_mkpd6")
+next_level = ExtResource("2_04v6o")
+
+[node name="temp_button" type="Button" parent="."]
+custom_minimum_size = Vector2(190, 200)
+offset_left = 392.0
+offset_top = 292.0
+offset_right = 400.0
+offset_bottom = 300.0
+text = "Clickme
+"
+
+[connection signal="pressed" from="temp_button" to="." method="_on_button_pressed"]
