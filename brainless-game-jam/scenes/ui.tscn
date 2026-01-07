@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://pqulaxcs0eyx"]
+
+[node name="ui" type="Node"]
+
+[node name="dialog_ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="parent_container" type="PanelContainer" parent="dialog_ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dialog_box_container" type="Control" parent="dialog_ui/parent_container"]
+custom_minimum_size = Vector2(600, 648)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="dialog_ui/parent_container/dialog_box_container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.12205247, 0.8347591, 7.70092e-07, 1)
+bbcode_enabled = true
+text = "
+
+This is a template text btw.
+We
+
+Have
+
+Space
+
+FOr
+WRITING
+
+MANY DIALOGUE LINES
+
+HOPEFULLY IMPLEMENTING THE 
+
+DIALOG_PLAYER SYSTEM
+
+
+EITHER WAY
+
+  ./go_to_sleep.exe
+
+SHUTTING SYSTEM DOWN ———————————————————————
+
+############################_                                                          42.9%
+
+"
+fit_content = true
+
+[node name="ColorRect" type="ColorRect" parent="dialog_ui/parent_container/dialog_box_container"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0045364476, 0.004536448, 0.0045364476, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="dialog_ui/parent_container"]
+custom_minimum_size = Vector2(1158, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="dialog_ui/parent_container/PanelContainer"]
+layout_mode = 2
+color = Color(0.12156863, 0.8352941, 0, 1)
