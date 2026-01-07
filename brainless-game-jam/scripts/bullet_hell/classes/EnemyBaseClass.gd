@@ -3,6 +3,7 @@ extends Node2D
 class_name Enemy
 
 @export var EnemyDataFile : EnemyData 
+@export var radius = 0.1
 
 # DEMO ---------------------------
 var bullet_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_bullet.tres")
@@ -15,12 +16,31 @@ var bullet_file = preload("res://scenes/bullet.tscn")
 func setup_enemy_data(data):
 	EnemyDataFile = data 
 
-func spawn_bullet(data, i ):
+# TODO:
+# this function will take the amount of bullets the character will spawn and set a marker group up 
+# equadistant from each other. since they will be nodes, they will rotate with the enemy,
+# which will allow for directional shooting
+
+# seems to be working
+func setup_bullet_spawns(bullets_per_shot, marker_group, enemy):
+	var rad_vector = enemy.position * radius
+	for i in bullets_per_shot:
+		var marker = Marker2D.new()	
+		marker_group.add_child(marker)
+		marker.position = rad_vector
+		marker.rotation = rad_vector.angle()
+		rad_vector = rad_vector.rotated(2*PI/bullets_per_shot)
+
+# TODO:
+# will spawn a bullet for every marker in the enemies marker group (made from
+# setup_bullet_spawns)
+func spawn_bullet(data, marker_group):
 	var bullet_data = data
-	var spawnedBullet = bullet_file.instantiate()
-	spawnedBullet.setup_bullet_data(bullet_data)
-	get_parent().get_node("Enemy").add_child(spawnedBullet)
-	spawnedBullet.global_position = global_position
+	for marker in marker_group.get_children():
+		var spawnedBullet = bullet_file.instantiate()
+		spawnedBullet.setup_bullet_data(bullet_data)
+		get_parent().add_child(spawnedBullet)
+		spawnedBullet.transform = marker.global_transform
 	
 	
 	

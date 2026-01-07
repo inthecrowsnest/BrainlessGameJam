@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 	duration -= delta
 	if duration <= 0:
 		queue_free()
-	position += velocity * delta
+	position += transform.x * delta * speed
 
 
 func _on_body_entered(body: Node2D) -> void:
