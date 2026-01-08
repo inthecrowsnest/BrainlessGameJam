@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyrhphvcmtnox"]
+
+[ext_resource type="Texture2D" uid="uid://c68dnr4k6fsp6" path="res://assets/black-border-transparent-7-removebg-preview.png" id="1_4nepc"]
+[ext_resource type="Script" uid="uid://dkwtuoq3envfo" path="res://scripts/UITweener.gd" id="1_08que"]
+
+[node name="BoundaryBox" type="Node2D"]
+
+[node name="Walls" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_08que")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(0.25, 0)
+scale = Vector2(1.000761, 1)
+texture = ExtResource("1_4nepc")
+region_enabled = true
+region_rect = Rect2(143.5, 41.5, 371, 288)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-172, -130, -170, 124, 171, 124, 171, -131)
+
+[node name="WallsHitbox" type="Area2D" parent="Walls" groups=["walls"]]
+position = Vector2(189, 145)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/WallsHitbox"]
+build_mode = 1
+polygon = PackedVector2Array(-7, -279, -9, -7, -367, -6, -369, -279)
+
+[node name="EnemySpawnGroup" type="Node2D" parent="Walls"]
+
+[node name="TopLeft" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(-142, -96)
+
+[node name="TopMid" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(-1, -96)
+
+[node name="TopRight" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(141, -96)
+
+[node name="MidLeft" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(-143, 1)
+
+[node name="MidRight" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(144, 0)
+
+[node name="BottomRight" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(146, 103)
+
+[node name="BottomMid" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(1, 108)
+
+[node name="BottomLeft" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(-144, 107)
