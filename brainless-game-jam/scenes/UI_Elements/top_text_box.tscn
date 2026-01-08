@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://m3gy2bpjw5b8"]
+
+[ext_resource type="Texture2D" uid="uid://bwm0qk3vqs1n7" path="res://assets/icon.svg" id="1_voigk"]
+
+[node name="TopTextBox" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 141.0
+grow_horizontal = 2
+texture = ExtResource("1_voigk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "TEXT: I AM THE TOP (MOSTLY) STATIC TEXT
+"

@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://6yawc3e7ikv8" path="res://scripts/bullet_hell/bullet_resources/test_enemy.tres" id="3_ml0hh"]
 [ext_resource type="Resource" uid="uid://dnpt16v14ncyy" path="res://scripts/bullet_hell/bullet_resources/test_enemy2.tres" id="4_uknch"]
 [ext_resource type="Resource" uid="uid://cq2j67c8e7h5s" path="res://scripts/bullet_hell/bullet_resources/testenemy3.tres" id="5_dndny"]
-[ext_resource type="PackedScene" uid="uid://dyrhphvcmtnox" path="res://scenes/boundaryBox.tscn" id="6_g2dab"]
+[ext_resource type="PackedScene" uid="uid://dyrhphvcmtnox" path="res://scenes/UI_Elements/boundaryBox.tscn" id="6_g2dab"]
 
 [node name="bullet_hell_demo" type="Node"]
 

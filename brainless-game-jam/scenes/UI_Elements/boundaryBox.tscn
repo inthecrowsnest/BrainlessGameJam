@@ -7,6 +7,7 @@
 
 [node name="Walls" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
+scale = Vector2(0.3, 0.4)
 script = ExtResource("1_08que")
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls"]
