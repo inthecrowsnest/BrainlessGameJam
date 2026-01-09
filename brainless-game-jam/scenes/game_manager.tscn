@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://nn54ejdqdv2u"]
+
+[ext_resource type="Script" uid="uid://cu1486rsfr7u7" path="res://scripts/bullet_hell/game_manager.gd" id="1_hwd4i"]
+[ext_resource type="PackedScene" uid="uid://dyrhphvcmtnox" path="res://scenes/UI_Elements/boundaryBox.tscn" id="2_glms7"]
+
+[node name="gameManager" type="Node"]
+script = ExtResource("1_hwd4i")
+
+[node name="BoundaryBox" parent="." instance=ExtResource("2_glms7")]
+unique_name_in_owner = true
+position = Vector2(570, 291)
+scale = Vector2(3.8741426, 3.8741426)

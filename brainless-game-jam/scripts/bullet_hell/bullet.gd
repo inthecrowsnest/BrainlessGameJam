@@ -2,7 +2,7 @@ extends Bullet
 
 var speed = 100
 var direction := 60
-var duration = 10
+var duration = 100
 var velocity : Vector2 = Vector2(1,0)
 var bullet_owner : String
 var damage = 10

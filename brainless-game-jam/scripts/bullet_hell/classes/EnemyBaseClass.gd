@@ -5,11 +5,11 @@ class_name Enemy
 @export var EnemyDataFile : EnemyData 
 @export var radius = 0.1
 
-# DEMO ---------------------------
-var bullet_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_bullet.tres")
-var enemy_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_enemy.tres")
-var bullet_file = preload("res://scenes/bullet.tscn")
-# ---------------------
+## DEMO ---------------------------
+#var bullet_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_bullet.tres")
+#var enemy_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_enemy.tres")
+#var bullet_file = preload("res://scenes/bullet.tscn")
+## ---------------------
 # This function is called when instancing an Enemy scene (probably by a gameManager).
 # The parameter data refers to a resource object (.tres) which we will assign to the variable EnemyData
 # In this way we can generate different type of enemies depending on their resource sheets
@@ -35,7 +35,7 @@ func setup_bullet_spawns(bullets_per_shot, marker_group, enemy):
 func spawn_bullet(data, marker_group):
 	var bullet_data = data
 	for marker in marker_group.get_children():
-		var spawnedBullet = bullet_file.instantiate()
+		var spawnedBullet = Global.bullet_file.instantiate()
 		spawnedBullet.setup_bullet_data(bullet_data)
 		get_parent().add_child(spawnedBullet)
 		spawnedBullet.transform = marker.global_transform

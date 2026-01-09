@@ -16,8 +16,8 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-SignalBus="*res://scripts/singletons/SignalBus.gd"
 Global="*res://scripts/singletons/Global.gd"
+SignalBus="*res://scripts/singletons/SignalBus.gd"
 
 [display]
 
