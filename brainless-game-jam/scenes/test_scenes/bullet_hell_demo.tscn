@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://82yi2qk3yblx"]
+[gd_scene load_steps=7 format=3 uid="uid://82yi2qk3yblx"]
 
 [ext_resource type="PackedScene" uid="uid://crs7ia6pep5lq" path="res://scenes/enemy.tscn" id="1_arcc2"]
 [ext_resource type="PackedScene" uid="uid://cgbxshykbgxn8" path="res://scenes/player.tscn" id="1_klrle"]
 [ext_resource type="Resource" uid="uid://6yawc3e7ikv8" path="res://scripts/bullet_hell/bullet_resources/test_enemy.tres" id="3_ml0hh"]
 [ext_resource type="Resource" uid="uid://dnpt16v14ncyy" path="res://scripts/bullet_hell/bullet_resources/test_enemy2.tres" id="4_uknch"]
 [ext_resource type="Resource" uid="uid://cq2j67c8e7h5s" path="res://scripts/bullet_hell/bullet_resources/testenemy3.tres" id="5_dndny"]
+[ext_resource type="PackedScene" uid="uid://dyrhphvcmtnox" path="res://scenes/UI_Elements/boundaryBox.tscn" id="6_g2dab"]
 
 [node name="bullet_hell_demo" type="Node"]
 
@@ -52,3 +53,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Walls" parent="." instance=ExtResource("6_g2dab")]
+position = Vector2(573, 236)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://0o1s2ryoypp1"]
+
+[ext_resource type="Script" uid="uid://bsq0q8hfbx0bv" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="Theme" id="Theme_vue75"]
+default_font_size = 50
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_l6cm7")
+
+[node name="START" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = 36.0
+offset_right = 90.5
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "START"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.0
+offset_top = -137.0
+offset_right = 292.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_vue75")
+text = "DON'T LEAVE ME DEMO"
+
+[connection signal="pressed" from="START" to="." method="_on_start_pressed"]

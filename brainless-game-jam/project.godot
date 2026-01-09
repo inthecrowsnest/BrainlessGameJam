@@ -16,8 +16,8 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Global="*res://scripts/singletons/Global.gd"
 SignalBus="*res://scripts/singletons/SignalBus.gd"
+Global="*res://scripts/singletons/Global.gd"
 
 [display]
 
@@ -27,6 +27,7 @@ window/stretch/mode="canvas_items"
 
 player=""
 enemies=""
+walls=""
 
 [input]
 

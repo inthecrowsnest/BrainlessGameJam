@@ -9,7 +9,7 @@ var enemy_dictionary = {
 }
 
 var level_dictionary = {
-	'level-1': preload("res://scenes/bullet_hell_demo.tscn"),
+	'level-1': preload("res://scenes/test_scenes/bullet_hell_demo.tscn"),
 }
 
 # When this variable is false, the game ends
