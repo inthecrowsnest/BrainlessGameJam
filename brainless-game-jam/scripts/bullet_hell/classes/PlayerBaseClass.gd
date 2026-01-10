@@ -4,7 +4,7 @@ class_name Player
 # DEMO ---------------------------
 var bullet_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_bullet.tres")
 var bullet_file = preload("res://scenes/bullet.tscn")
-@export var health : int = 100
+@onready var health = Global.player_health
 # ---------------------
 
 func spawn_bullet(data, spawn):
@@ -12,7 +12,11 @@ func spawn_bullet(data, spawn):
 	var spawnedBullet = bullet_file.instantiate()
 	spawnedBullet.setup_bullet_data(bullet_data)
 	spawnedBullet.transform = spawn.global_transform  # Get parent global position to spawn bullet there
+	spawnedBullet.scale = Vector2(0.2, 0.2) # bullets spawning super big?? for no reason??
 	spawnedBullet.bullet_owner = 'player'
+	spawnedBullet.speed = spawnedBullet.speed * 2.0
+	spawnedBullet.damage = spawnedBullet.damage * 2.0
+	spawnedBullet.add_to_group("bullets")
 	get_parent().add_child(spawnedBullet)
 	
 func hurt(damage):

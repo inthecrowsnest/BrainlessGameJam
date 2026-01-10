@@ -1,0 +1,108 @@
+# gameManager.gd
+extends Node
+
+@onready var boundary_box: Node2D = %BoundaryBox
+@onready var main_text: Node2D = %TextBox
+@onready var player = preload("res://scenes/player.tscn")
+var dialogue_script : Dictionary
+var current_wave : int;
+var walls;
+var skip = false;
+signal wave_complete
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("main_menu"):
+		get_tree().call_group("bullets", "queue_free")
+		get_tree().call_group("player", "queue_free")
+		get_tree().call_group("enemies", "queue_free")
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+			
+	if event.is_action_pressed("skip_text"):
+		skip = true
+
+func _ready() -> void:
+	walls = boundary_box.find_child("Walls")
+	boundary_box.visible = false
+	var data = "res://json/scripting.json"
+	var text = FileAccess.get_file_as_string(data) 
+	dialogue_script = JSON.parse_string(text)
+	
+	await main_text.add_text_chunk(dialogue_script["intro_demo"])
+	
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["spawn_box_demo"])
+	
+	await spawn_player()
+
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
+	
+	await walls.scale(boundary_box, 2.5, 2.5, 2.0)
+
+	await spawn_wave(dialogue_script["wave1_demo"])
+	
+	await on_wave_complete()
+	
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
+	
+	await walls.scale(boundary_box, 3, 4.0, 2.0)
+	
+	await spawn_wave(dialogue_script["wave2_demo"])
+	
+	await on_wave_complete()
+	
+	if !skip: 
+		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
+	
+	await main_text.size(main_text.textHolder, 450, 486.0, 2.0)
+	await walls.move_and_scale(boundary_box, 5.0, 4.0,
+	 boundary_box.global_position.x - 130, boundary_box.global_position.y, 2.0)
+	
+	await spawn_wave(dialogue_script["wave3_demo"])
+	
+	await on_wave_complete()
+	
+#	boss size
+	await walls.move_and_scale(boundary_box, 10.5, 4.4, 
+	boundary_box.global_position.x - 250, boundary_box.global_position.y, 2.0)
+	main_text.queue_free()
+	
+	print("wave over!!")
+	
+func spawn_wave(enemy_list: Array):
+	var enemy_type = enemy_list[0]
+	var spawn_location = enemy_list[1]
+	var enemy_num = enemy_list[2]
+	
+	spawn_enemy_data(enemy_type, spawn_location, enemy_num)
+	
+func spawn_player():
+	boundary_box.visible = true
+	var spawned_player = player.instantiate()
+	spawned_player.transform = walls.find_child("player_spawn").global_transform
+	spawned_player.scale = Vector2(0.2, 0.2)
+	get_tree().current_scene.add_child(spawned_player)
+
+func spawn_enemy_data(i, spawn_group, num_of_enemies):
+	var enemy_type = Global.enemy_dictionaries[i].file
+	current_wave = num_of_enemies
+	print(enemy_type)
+	for marker in walls.find_child("EnemySpawnGroup").get_children():
+		if marker.name in spawn_group:
+			var spawned_enemy = Global.enemy_file.instantiate()
+			spawned_enemy.setup_enemy_data(enemy_type)
+			spawned_enemy.transform = marker.global_transform
+			spawned_enemy.scale = Vector2(0.2, 0.2)
+			spawned_enemy.connect("enemy_death", on_enemy_death)
+			get_parent().add_child.call_deferred(spawned_enemy)
+			
+func on_enemy_death():
+	current_wave -= 1
+	if current_wave <= 0:
+		emit_signal("wave_complete")
+		
+func on_wave_complete():
+	await wave_complete
+#	clear all bullets on screen after wave clear
+	get_tree().call_group("bullets", "queue_free")

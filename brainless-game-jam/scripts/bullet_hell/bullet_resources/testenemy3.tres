@@ -7,4 +7,5 @@ script = ExtResource("1_w726w")
 id = "test3"
 name = "Ugly Godot girl"
 bullets_per_shot = 4
+rotation_speed = 5.0
 metadata/_custom_type_script = "uid://6jlwahgys00h"

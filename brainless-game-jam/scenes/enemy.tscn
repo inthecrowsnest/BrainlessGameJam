@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://crs7ia6pep5lq"]
 
-[ext_resource type="Texture2D" uid="uid://bwm0qk3vqs1n7" path="res://assets/icon.svg" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://dnmro475igkpq" path="res://scripts/bullet_hell/enemy.gd" id="1_md0e3"]
+[ext_resource type="Texture2D" uid="uid://bxb5nait566cg" path="res://assets/sprites/Brainless_MiscEnemy.png" id="2_md0e3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 size = Vector2(125, 127)
@@ -10,8 +10,9 @@ size = Vector2(125, 127)
 script = ExtResource("1_md0e3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0.56422836, 0.4967038, 1)
-texture = ExtResource("1_7p1mj")
+position = Vector2(-1, -5)
+scale = Vector2(0.28515625, 0.25195313)
+texture = ExtResource("2_md0e3")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1.5)

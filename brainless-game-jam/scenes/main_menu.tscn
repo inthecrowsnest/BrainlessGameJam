@@ -14,10 +14,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = 36.0
-offset_right = 90.5
-offset_bottom = 112.0
+offset_left = -62.5
+offset_top = -78.0
+offset_right = 93.5
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "START"
@@ -28,14 +28,227 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -274.0
-offset_top = -137.0
-offset_right = 292.0
-offset_bottom = -53.0
+offset_left = -271.0
+offset_top = -251.0
+offset_right = 295.0
+offset_bottom = -167.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_vue75")
 text = "DON'T LEAVE ME DEMO"
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -265.0
+offset_right = 328.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.17929238, 0.18000278, 0.18194443, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="PlayerRotation Speed" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/PlayerRotation Speed"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Player Rotation Speed "
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/VBoxContainer/PlayerRotation Speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerRotation" type="HSlider" parent="ColorRect/VBoxContainer/PlayerRotation Speed/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+tick_count = 10
+ticks_position = 3
+
+[node name="PlayerRotation Speed2" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/PlayerRotation Speed2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Bullet Speed                   "
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/VBoxContainer/PlayerRotation Speed2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BulletSpeed" type="HSlider" parent="ColorRect/VBoxContainer/PlayerRotation Speed2/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 10.0
+step = 10.0
+value = 40.0
+tick_count = 10
+ticks_position = 3
+
+[node name="PlayerRotation Speed3" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/PlayerRotation Speed3"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Bullet Damage                  "
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/VBoxContainer/PlayerRotation Speed3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BulletDamage" type="HSlider" parent="ColorRect/VBoxContainer/PlayerRotation Speed3/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 10.0
+value = 10.0
+tick_count = 10
+ticks_position = 3
+
+[node name="PlayerRotation Speed4" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/PlayerRotation Speed4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Player Speed                    "
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/VBoxContainer/PlayerRotation Speed4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player Speed" type="HSlider" parent="ColorRect/VBoxContainer/PlayerRotation Speed4/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 100.0
+max_value = 1000.0
+step = 100.0
+value = 800.0
+tick_count = 10
+ticks_position = 3
+
+[node name="PlayerRotation Speed5" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/PlayerRotation Speed5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Player Fire Delay                    "
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/VBoxContainer/PlayerRotation Speed5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player Fire Delay" type="HSlider" parent="ColorRect/VBoxContainer/PlayerRotation Speed5/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.1
+value = 0.2
+tick_count = 20
+ticks_position = 3
+
+[node name="PlayerRotation Speed6" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/PlayerRotation Speed6"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Enemy Fire Delay                    "
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/VBoxContainer/PlayerRotation Speed6"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyFireDelay" type="HSlider" parent="ColorRect/VBoxContainer/PlayerRotation Speed6/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.1
+value = 1.0
+tick_count = 20
+ticks_position = 3
+
+[node name="PlayerRotation Speed7" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/PlayerRotation Speed7"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Player Health              "
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/VBoxContainer/PlayerRotation Speed7"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerHealth" type="HSlider" parent="ColorRect/VBoxContainer/PlayerRotation Speed7/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 100.0
+max_value = 200.0
+step = 10.0
+value = 100.0
+tick_count = 10
+ticks_position = 3
+
+[node name="PlayerRotation Speed8" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/PlayerRotation Speed8"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Enemy Health              "
+
+[node name="BoxContainer" type="BoxContainer" parent="ColorRect/VBoxContainer/PlayerRotation Speed8"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemyHealth" type="HSlider" parent="ColorRect/VBoxContainer/PlayerRotation Speed8/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 100.0
+max_value = 200.0
+step = 10.0
+value = 100.0
+tick_count = 10
+ticks_position = 3
+
 [connection signal="pressed" from="START" to="." method="_on_start_pressed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/PlayerRotation Speed/BoxContainer/PlayerRotation" to="." method="_on_player_rotation_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/PlayerRotation Speed2/BoxContainer/BulletSpeed" to="." method="_on_bullet_speed_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/PlayerRotation Speed3/BoxContainer/BulletDamage" to="." method="_on_bullet_damage_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/PlayerRotation Speed4/BoxContainer/Player Speed" to="." method="_on_player_speed_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/PlayerRotation Speed5/BoxContainer/Player Fire Delay" to="." method="_on_player_fire_delay_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/PlayerRotation Speed6/BoxContainer/EnemyFireDelay" to="." method="_on_enemy_fire_delay_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/PlayerRotation Speed7/BoxContainer/PlayerHealth" to="." method="_on_player_health_value_changed"]
+[connection signal="value_changed" from="ColorRect/VBoxContainer/PlayerRotation Speed8/BoxContainer/EnemyHealth" to="." method="_on_enemy_health_value_changed"]

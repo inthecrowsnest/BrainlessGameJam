@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx8lwwjd2hcaa"]
+
+[ext_resource type="PackedScene" uid="uid://crs7ia6pep5lq" path="res://scenes/enemy.tscn" id="1_arcc2"]
+[ext_resource type="PackedScene" uid="uid://cgbxshykbgxn8" path="res://scenes/player.tscn" id="1_klrle"]
+[ext_resource type="Resource" uid="uid://6yawc3e7ikv8" path="res://scripts/bullet_hell/bullet_resources/test_enemy.tres" id="3_ml0hh"]
+[ext_resource type="Resource" uid="uid://dnpt16v14ncyy" path="res://scripts/bullet_hell/bullet_resources/test_enemy2.tres" id="4_uknch"]
+[ext_resource type="Resource" uid="uid://cq2j67c8e7h5s" path="res://scripts/bullet_hell/bullet_resources/testenemy3.tres" id="5_dndny"]
+
+[node name="bullet_hell_demo" type="Node"]
+
+[node name="GameplayWorld" type="Node2D" parent="."]
+
+[node name="Player" parent="GameplayWorld" instance=ExtResource("1_klrle")]
+position = Vector2(427.00006, 154)
+scale = Vector2(0.274545, 0.274545)
+
+[node name="Enemy" parent="GameplayWorld" instance=ExtResource("1_arcc2")]
+position = Vector2(138, 456)
+scale = Vector2(0.25, 0.25)
+EnemyDataFile = ExtResource("3_ml0hh")
+
+[node name="Enemy2" parent="GameplayWorld" instance=ExtResource("1_arcc2")]
+position = Vector2(147, 336)
+scale = Vector2(0.25, 0.25)
+rotation_speed = 100.0
+shot_delay = 0.2
+EnemyDataFile = ExtResource("4_uknch")
+
+[node name="Enemy3" parent="GameplayWorld" instance=ExtResource("1_arcc2")]
+position = Vector2(151, 229)
+scale = Vector2(0.25, 0.25)
+rotation_speed = 50.0
+EnemyDataFile = ExtResource("5_dndny")
+
+[node name="UI" type="Control" parent="."]
+visible = false
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
