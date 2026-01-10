@@ -36,11 +36,9 @@ func setup_bullet_spawns(bullets_per_shot, marker_group, enemy):
 
 # will spawn a bullet for every marker in the enemies marker group (made from
 # setup_bullet_spawns)
-func spawn_bullet(data, marker_group):
-	var bullet_data = data
+func spawn_bullet(marker_group):
 	for marker in marker_group.get_children():
 		var spawnedBullet = Global.bullet_file.instantiate()
-		spawnedBullet.setup_bullet_data(bullet_data)
 		get_parent().add_child(spawnedBullet)
 		spawnedBullet.transform = marker.global_transform
 		spawnedBullet.bullet_owner = 'enemies'

@@ -12,12 +12,13 @@ func _ready() -> void:
 func add_text_line(text : String, type_delay, first: bool, end: bool):
 	if first:
 		textbox.add_text("> ")
-	scroll.scroll_vertical = scrollbar.max_value
 	for c in text:
 		await get_tree().create_timer(type_delay).timeout
 		textbox.add_text(c)
+		scroll.scroll_vertical = scrollbar.max_value
 	if end:
 		textbox.add_text('\n')
+	scroll.scroll_vertical = scrollbar.max_value
 	
 func add_text_chunk(text_list: Array):
 	for line in text_list:

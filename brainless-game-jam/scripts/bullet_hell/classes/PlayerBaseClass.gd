@@ -5,6 +5,9 @@ class_name Player
 var bullet_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_bullet.tres")
 var bullet_file = preload("res://scenes/bullet.tscn")
 @onready var health = Global.player_health
+
+signal player_death
+
 # ---------------------
 
 func spawn_bullet(data, spawn):
@@ -24,4 +27,5 @@ func hurt(damage):
 	
 	if health <= 0:
 		self.queue_free()
+		self.emit_signal("player_death")
 	

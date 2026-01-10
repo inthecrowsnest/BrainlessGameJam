@@ -6,6 +6,7 @@ extends Node
 @onready var player = preload("res://scenes/player.tscn")
 var dialogue_script : Dictionary
 var current_wave : int;
+var current_wave_name : String;
 var walls;
 var skip = false;
 signal wave_complete
@@ -31,46 +32,49 @@ func _ready() -> void:
 	
 	if !skip:
 		await main_text.add_text_chunk(dialogue_script["spawn_box_demo"])
-	
+	#
 	await spawn_player()
-
+#
 	if !skip:
 		await main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
-	
+	#
 	await walls.scale(boundary_box, 2.5, 2.5, 2.0)
-
-	await spawn_wave(dialogue_script["wave1_demo"])
-	
+#
+	await spawn_wave("wave1_demo")
+	#
 	await on_wave_complete()
-	
+	#
 	if !skip:
 		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
-	
+	#
 	await walls.scale(boundary_box, 3, 4.0, 2.0)
-	
-	await spawn_wave(dialogue_script["wave2_demo"])
-	
+	#
+	await spawn_wave("wave2_demo")
+	#
 	await on_wave_complete()
-	
+	#
 	if !skip: 
 		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
-	
+	#
 	await main_text.size(main_text.textHolder, 450, 486.0, 2.0)
 	await walls.move_and_scale(boundary_box, 5.0, 4.0,
-	 boundary_box.global_position.x - 130, boundary_box.global_position.y, 2.0)
+		boundary_box.global_position.x - 130, boundary_box.global_position.y, 2.0)
 	
-	await spawn_wave(dialogue_script["wave3_demo"])
+	
+	await spawn_wave("wave3_demo")
 	
 	await on_wave_complete()
 	
 #	boss size
-	await walls.move_and_scale(boundary_box, 10.5, 4.4, 
-	boundary_box.global_position.x - 250, boundary_box.global_position.y, 2.0)
+	await walls.move_and_scale(boundary_box, 10.5, 4.5, 
+	boundary_box.global_position.x - 250, boundary_box.global_position.y + 10, 2.0)
 	main_text.queue_free()
 	
 	print("wave over!!")
 	
-func spawn_wave(enemy_list: Array):
+func spawn_wave(wave_name: String):
+	current_wave_name = wave_name
+	var enemy_list = dialogue_script[wave_name]
 	var enemy_type = enemy_list[0]
 	var spawn_location = enemy_list[1]
 	var enemy_num = enemy_list[2]
@@ -82,7 +86,8 @@ func spawn_player():
 	var spawned_player = player.instantiate()
 	spawned_player.transform = walls.find_child("player_spawn").global_transform
 	spawned_player.scale = Vector2(0.2, 0.2)
-	get_tree().current_scene.add_child(spawned_player)
+	spawned_player.connect("player_death", on_player_death)
+	get_tree().current_scene.add_child.call_deferred(spawned_player)
 
 func spawn_enemy_data(i, spawn_group, num_of_enemies):
 	var enemy_type = Global.enemy_dictionaries[i].file
@@ -101,6 +106,16 @@ func on_enemy_death():
 	current_wave -= 1
 	if current_wave <= 0:
 		emit_signal("wave_complete")
+		
+func on_player_death():
+#	respawn player
+	spawn_player()
+#	clear all bullets to prevent spawn damage
+	get_tree().call_group("bullets", "queue_free")
+	get_tree().call_group("enemies", "queue_free")
+	main_text.add_text_chunk(dialogue_script["death"])
+	spawn_wave(current_wave_name)
+	
 		
 func on_wave_complete():
 	await wave_complete
