@@ -3,8 +3,8 @@ extends Enemy
 @onready var marker_group := %markerGroup
 @onready var timer := %shotTimer
 @export var enemy_file : Resource
-@export var rotation_speed := 0.0
-@export var shot_delay := 1.0
+#@export var rotation_speed := 45.0
+@onready var shot_delay = Global.enemy_fire_delay
 
 func _ready() -> void:
 	#setup_enemy_data(enemy_file) # When an enemy is instanced they will assign themselves data (for now)
@@ -16,7 +16,7 @@ func _ready() -> void:
 # In the future, a gameManager will do this instead
 	
 func _process(delta: float) -> void:
-	self.rotation_degrees -= rotation_speed * delta
+	self.rotation_degrees -= EnemyDataFile.rotation_speed * delta
 	
 
 func _on_shot_timer_timeout() -> void:

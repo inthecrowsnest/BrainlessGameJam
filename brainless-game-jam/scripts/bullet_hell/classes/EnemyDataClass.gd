@@ -10,9 +10,7 @@ class_name EnemyData
 @export var texture : Texture # We can switch enemy sprites with this
 @export var bullets_per_shot := 1
 @export var type: String 
-
-
-#@export var rotation_speed := 0.0
+@export var rotation_speed := 0.0
 #@export var shot_delay := 1.0
 
 

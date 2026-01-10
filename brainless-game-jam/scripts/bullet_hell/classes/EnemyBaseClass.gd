@@ -4,6 +4,9 @@ class_name Enemy
 
 @export var EnemyDataFile : EnemyData 
 @export var radius = 0.1
+@onready var health = Global.enemy_health
+
+signal enemy_death
 
 ## DEMO ---------------------------
 #var bullet_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_bullet.tres")
@@ -14,7 +17,8 @@ class_name Enemy
 # The parameter data refers to a resource object (.tres) which we will assign to the variable EnemyData
 # In this way we can generate different type of enemies depending on their resource sheets
 func setup_enemy_data(data):
-	EnemyDataFile = data 
+	var load_data = load(data)
+	EnemyDataFile = load_data 
 
 
 # this function will take the amount of bullets the character will spawn and set a marker group up 
@@ -40,11 +44,14 @@ func spawn_bullet(data, marker_group):
 		get_parent().add_child(spawnedBullet)
 		spawnedBullet.transform = marker.global_transform
 		spawnedBullet.bullet_owner = 'enemies'
+		spawnedBullet.add_to_group("bullets")
 	
 func hurt(damage):
-	EnemyDataFile.health -= damage
+	health -= damage
+	print(health)
 	
-	if EnemyDataFile.health <= 0:
+	if health <= 0:
+		emit_signal("enemy_death")
 		self.queue_free()
 	
 	

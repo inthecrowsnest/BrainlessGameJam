@@ -1,29 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgbxshykbgxn8"]
+[gd_scene load_steps=4 format=3 uid="uid://cgbxshykbgxn8"]
 
-[ext_resource type="Texture2D" uid="uid://bwm0qk3vqs1n7" path="res://assets/icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://113elroklowj" path="res://player.gd" id="1_g2els"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(124, 126)
+[ext_resource type="Texture2D" uid="uid://wmmja71n7qtc" path="res://assets/sprites/Brainless_Player.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(128, 129)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
-speed = 800
-rotation_speed = 3.0
-
-[node name="DialogueInteractionArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueInteractionArea"]
-position = Vector2(0, -2)
-shape = SubResource("RectangleShape2D_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3vyb7")
+position = Vector2(22, -2)
+rotation = 1.5707964
+scale = Vector2(0.4101562, 0.40283203)
+texture = ExtResource("2_g2els")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
@@ -31,7 +21,7 @@ shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="BulletSpawnPoint" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(70, 0)
+position = Vector2(103, 0)
 scale = Vector2(2, 2)
 gizmo_extents = 34.5
 

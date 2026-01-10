@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyrhphvcmtnox"]
 
 [ext_resource type="Texture2D" uid="uid://c68dnr4k6fsp6" path="res://assets/black-border-transparent-7-removebg-preview.png" id="1_4nepc"]
-[ext_resource type="Script" path="res://scripts/UITweener.gd" id="1_08que"]
+[ext_resource type="Script" uid="uid://dkwtuoq3envfo" path="res://scripts/UITweener.gd" id="1_08que"]
 
 [node name="BoundaryBox" type="Node2D"]
 
@@ -26,7 +26,7 @@ position = Vector2(189, 145)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/WallsHitbox"]
 build_mode = 1
-polygon = PackedVector2Array(-7, -279, -9, -7, -367, -6, -369, -279)
+polygon = PackedVector2Array(17.666656, -300, 17.666656, 12.5, -389, 7.5, -392.3333, -297.5)
 
 [node name="EnemySpawnGroup" type="Node2D" parent="Walls"]
 unique_name_in_owner = true
@@ -54,3 +54,5 @@ position = Vector2(1, 108)
 
 [node name="BottomLeft" type="Marker2D" parent="Walls/EnemySpawnGroup"]
 position = Vector2(-144, 107)
+
+[node name="player_spawn" type="Marker2D" parent="Walls"]

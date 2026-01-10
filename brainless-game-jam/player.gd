@@ -8,10 +8,9 @@ extends Player
 
 @onready var bullet_timer = %BulletDelay
 
-@export var speed = 400
-@export var rotation_speed = 1.5
-#@export var bullet : PackedScene
-@export var fire_delay : float = 0.2
+@onready var speed = Global.player_speed
+@onready var rotation_speed = Global.player_rotation
+@onready var fire_delay = Global.player_fire_delay
 
 var rotation_direction = 0
 var is_shooting = false 

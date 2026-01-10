@@ -3,13 +3,8 @@ extends Bullet
 var speed = 100
 var direction := 60
 var duration = 100
-var velocity : Vector2 = Vector2(1,0)
 var bullet_owner : String
 var damage = 10
-
-# Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#print('A bullet entered scene')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,5 +30,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 # since the walls are an area2d
 func _on_area_entered(area: Area2D) -> void:
+	#if area.is_in_group("bullets"):
+		#area.queue_free()
+		#queue_free()
+	
 	if area.is_in_group("walls"):
 		queue_free()

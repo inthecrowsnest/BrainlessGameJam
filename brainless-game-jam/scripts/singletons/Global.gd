@@ -2,17 +2,26 @@
 # This class will be in charge of saving data that could be relevant overall in the project.
 extends Node
 
+var player_rotation = 3.0
+var bullet_speed = 40
+var bullet_damage = 10
+var player_speed = 800
+var player_fire_delay = 0.2
+var enemy_fire_delay = 1
+var player_health = 100
+var enemy_health = 100
+
 # –––––––––––––––––– Feel free to modify any data inside here - Jack ——————————
 var enemy_dictionaries = [
  {
-	'name': "enemy_scene",
-	'type': 'scene',
-	'file': preload("res://scenes/enemy.tscn") # 
+	'name': "4 bullet / 45 rotate",
+	'type': 'resource',
+	'file': "res://scripts/bullet_hell/bullet_resources/test_enemy.tres" 
  },
  {
-	'name':'static_enemy',
+	'name':'2 bullet / 90 rotate',
 	'type': 'resource',
-	'file': null
+	'file': "res://scripts/bullet_hell/bullet_resources/test_enemy2.tres"
  }
 ]
 
