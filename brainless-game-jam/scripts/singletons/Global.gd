@@ -3,7 +3,7 @@
 extends Node
 
 var player_rotation = 3.0
-var bullet_speed = 40
+var bullet_speed = 450.0
 var bullet_damage = 10
 var player_speed = 800
 var player_fire_delay = 0.2

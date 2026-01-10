@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ykhx6efadlyt"]
 
 [ext_resource type="Script" uid="uid://c2flbn6tyfwrl" path="res://scripts/main_text_box.gd" id="1_otbjq"]
-[ext_resource type="Texture2D" uid="uid://bwm0qk3vqs1n7" path="res://assets/icon.svg" id="2_etv58"]
+[ext_resource type="FontFile" uid="uid://ckofuhb827yne" path="res://assets/Geo-Regular.ttf" id="2_sqi7m"]
 
 [node name="TextBox" type="Node2D"]
 script = ExtResource("1_otbjq")
@@ -14,13 +14,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainTextBox" type="TextureRect" parent="Control"]
+[node name="MainTextBox" type="ColorRect" parent="Control"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 147.0
-offset_right = 591.0
-offset_bottom = 633.0
-texture = ExtResource("2_etv58")
+offset_left = 8.0
+offset_top = 122.0
+offset_right = 580.0
+offset_bottom = 629.0
+color = Color(0, 0, 0, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/MainTextBox"]
 layout_mode = 1
@@ -37,7 +37,12 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0.68235296, 0.09019608, 1)
+theme_override_fonts/normal_font = ExtResource("2_sqi7m")
+theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
+text = "
+"
 fit_content = true
 scroll_following = true
 scroll_following_visible_characters = true

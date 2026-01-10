@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyrhphvcmtnox"]
+[gd_scene load_steps=2 format=3 uid="uid://dyrhphvcmtnox"]
 
-[ext_resource type="Texture2D" uid="uid://c68dnr4k6fsp6" path="res://assets/black-border-transparent-7-removebg-preview.png" id="1_4nepc"]
 [ext_resource type="Script" uid="uid://dkwtuoq3envfo" path="res://scripts/UITweener.gd" id="1_08que"]
 
 [node name="BoundaryBox" type="Node2D"]
@@ -10,12 +9,44 @@ unique_name_in_owner = true
 scale = Vector2(0.3, 0.4)
 script = ExtResource("1_08que")
 
-[node name="Sprite2D" type="Sprite2D" parent="Walls"]
-position = Vector2(0.25, 0)
-scale = Vector2(1.000761, 1)
-texture = ExtResource("1_4nepc")
-region_enabled = true
-region_rect = Rect2(143.5, 41.5, 371, 288)
+[node name="WallColor" type="Control" parent="Walls"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 0.25
+offset_right = 40.25
+offset_bottom = 40.0
+
+[node name="TopWall" type="ColorRect" parent="Walls/WallColor"]
+layout_mode = 0
+offset_left = -186.77452
+offset_top = -140.0
+offset_right = 186.27489
+offset_bottom = -127.5
+color = Color(0, 0.5568628, 0.0627451, 1)
+
+[node name="BottomWall" type="ColorRect" parent="Walls/WallColor"]
+layout_mode = 0
+offset_left = -186.77452
+offset_top = 130.0
+offset_right = 186.27489
+offset_bottom = 145.0
+color = Color(0, 0.5568628, 0.0627451, 1)
+
+[node name="LeftWall" type="ColorRect" parent="Walls/WallColor"]
+layout_mode = 0
+offset_left = -186.77452
+offset_top = -140.0
+offset_right = -170.12053
+offset_bottom = 145.0
+color = Color(0, 0.5568628, 0.0627451, 1)
+
+[node name="RightWall" type="ColorRect" parent="Walls/WallColor"]
+layout_mode = 0
+offset_left = 169.6209
+offset_top = -140.0
+offset_right = 186.27489
+offset_bottom = 145.0
+color = Color(0, 0.5568628, 0.0627451, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
 build_mode = 1
@@ -26,7 +57,7 @@ position = Vector2(189, 145)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/WallsHitbox"]
 build_mode = 1
-polygon = PackedVector2Array(17.666656, -300, 17.666656, 12.5, -389, 7.5, -392.3333, -297.5)
+polygon = PackedVector2Array(-2.3333435, -285, -2.3333435, 0, -375.66666, 0, -375.66666, -285)
 
 [node name="EnemySpawnGroup" type="Node2D" parent="Walls"]
 unique_name_in_owner = true

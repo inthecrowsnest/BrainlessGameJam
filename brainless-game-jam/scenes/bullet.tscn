@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://drvkaoxtcf388" path="res://assets/sprites/Brainless_Bullet.png" id="3_l5glv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
-size = Vector2(122, 114.5)
+size = Vector2(50.925907, 48.500866)
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.41236377, 0.41236377)
@@ -18,7 +18,8 @@ scale = Vector2(0.2878913, 0.2807867)
 texture = ExtResource("3_l5glv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.25)
+position = Vector2(1.2125196, 2.4250414)
+scale = Vector2(1.0000002, 1.0000002)
 shape = SubResource("RectangleShape2D_y25gk")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
