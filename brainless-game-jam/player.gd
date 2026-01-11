@@ -14,7 +14,7 @@ extends Player
 
 var rotation_direction = 0
 var is_shooting = false 
-
+var invinc = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
