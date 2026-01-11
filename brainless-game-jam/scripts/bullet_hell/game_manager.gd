@@ -10,8 +10,9 @@ var current_wave_name : String;
 var walls;
 var skip = false;
 var boss;
-var boss_beaten : bool = false
+var boss_unbeaten : bool = true
 signal wave_complete
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("main_menu"):
@@ -44,6 +45,8 @@ func _ready() -> void:
 #
 	await spawn_wave("wave1_demo") 
 	#spawn_wave("wave1_subspawn")
+	
+	audio_stream_player.play()
 	#
 	await on_wave_complete()
 	#
@@ -57,40 +60,29 @@ func _ready() -> void:
 	await on_wave_complete()
 	#
 	if !skip: 
-		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
+		await main_text.add_text_chunk(dialogue_script["pre_wave_demo2"])
 	#
 	await main_text.size(main_text.textHolder, 450, 486.0, 2.0)
 	await walls.move_and_scale(boundary_box, 5.0, 4.0,
 		boundary_box.global_position.x - 130, boundary_box.global_position.y, 2.0)
 	
 	
-	#await spawn_wave("wave3_demo")
+	await spawn_wave("wave3_demo")
 	#
-	#await on_wave_complete()
+	await on_wave_complete()
 	
 #	boss size
+	await main_text.add_text_chunk(dialogue_script["boss_dialog"])
 	await walls.move_and_scale(boundary_box, 10.5, 4.5, 
 	boundary_box.global_position.x - 250, boundary_box.global_position.y + 10, 2.0)
 	main_text.queue_free()
 	
 	await spawn_boss()
 	
-	while boss.health >= 960:
-		boss_beaten = false
+	while boss.health >= 500:
 		await get_tree().create_timer(5).timeout
 		switch_boss_state()
-		
-	if boss_beaten:
-	# call boss "impossible round"
-		switch_boss_state()
-		print('Boss entered true state')
-#	after 15 seconds, clear all bullets and stop firing
-		await get_tree().create_timer(15).timeout
-		boss.process_mode = boss.PROCESS_MODE_DISABLED
-		boss.setup_enemy_data(Global.boss_states[4]) # state that has boss not shoot at all
-		get_tree().call_group("bullets", "queue_free")
-		boss.health = 10000.0 #make sure cant kill boss here
-#	main_text.add_text_chunk(dialogue_script["boss_defeat"])
+	
 func spawn_wave(wave_name: String):
 	current_wave_name = wave_name
 	var enemy_list = dialogue_script[wave_name]
@@ -101,13 +93,14 @@ func spawn_wave(wave_name: String):
 	spawn_enemy_data(enemy_type, spawn_location, enemy_num)
 	
 func spawn_player():
-	
-	boundary_box.visible = true
-	var spawned_player = player.instantiate()
-	spawned_player.transform = walls.find_child("player_spawn").global_transform
-	spawned_player.scale = Vector2(0.2, 0.2)
-	spawned_player.connect("player_death", on_player_death)
-	get_tree().current_scene.add_child.call_deferred(spawned_player)
+	var resp_time = get_tree().create_timer(3)
+	if resp_time.timeout:
+		boundary_box.visible = true
+		var spawned_player = player.instantiate()
+		spawned_player.transform = walls.find_child("player_spawn").global_transform
+		spawned_player.scale = Vector2(0.2, 0.2)
+		spawned_player.connect("player_death", on_player_death)
+		get_tree().current_scene.add_child.call_deferred(spawned_player)
 
 func spawn_boss():
 	current_wave_name = "boss"
@@ -122,15 +115,15 @@ func spawn_boss():
 	
 func switch_boss_state():
 	var data
-	if !boss_beaten:
+	if boss_unbeaten:
 		var state = randi_range(0, 2)
 		print("switching to state =", state)
 		data = Global.boss_states[state]
-		boss._ready()
+		#boss._ready()
 	else: 
 		print("final round")
 		data = Global.boss_states[3]
-		boss._ready()
+		#boss._ready()
 	boss.setup_enemy_data(data)
 	boss.position = boss.EnemyDataFile.position 
 	print(boss.position)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://nn54ejdqdv2u"]
+[gd_scene load_steps=7 format=3 uid="uid://nn54ejdqdv2u"]
 
 [ext_resource type="Script" uid="uid://cu1486rsfr7u7" path="res://scripts/bullet_hell/game_manager.gd" id="1_hwd4i"]
 [ext_resource type="AudioStream" uid="uid://b1v7xjsc30b4e" path="res://assets/sounds/sfx-blipmale.wav" id="2_eaq8r"]
 [ext_resource type="PackedScene" uid="uid://dyrhphvcmtnox" path="res://scenes/UI_Elements/boundaryBox.tscn" id="2_glms7"]
 [ext_resource type="PackedScene" uid="uid://ykhx6efadlyt" path="res://scenes/UI_Elements/mainTextBox.tscn" id="3_oo155"]
 [ext_resource type="PackedScene" uid="uid://m3gy2bpjw5b8" path="res://scenes/UI_Elements/top_text_box.tscn" id="4_eaq8r"]
+[ext_resource type="AudioStream" uid="uid://d32r8x65nd21s" path="res://assets/sounds/player.gd.uid.mp3" id="6_ternb"]
 
 [node name="gameManager" type="Node"]
 script = ExtResource("1_hwd4i")
@@ -32,3 +33,8 @@ position = Vector2(1, 2)
 
 [node name="TopTextBox" parent="." instance=ExtResource("4_eaq8r")]
 position = Vector2(348, 19)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_ternb")
+volume_db = 1.137

@@ -6,31 +6,42 @@
 	[" ", 1, true, true]
   ],
   "spawn_box_demo" : [
-	["Well, to play you'll need something to do, ", 0.1, true, false],
-	["huh?", 0.2, false, true],
+	["Wanna play something?", 0.1, true, true],
+	["I'm bored already, I want a new game", 0.2, true, true],
 	["Whoops.", 0.1, true, true],
-	["Here you go!", 0.1, true, true],
+	["Looks like my start button slipped :0.", 0.1, true, true],
 	[" ", 1, true, true]
   ],
  "spawn_en_demo" : [
-	["This is boring isn't it", 0.1, true, false],
+	["So, you think this is boring?", 0.1, true, false],
 	["...", 0.5, false, true],
 	["Like a fish in a tank way too small", 0.2, true, true],
+	["What about THIS?", 0.1, false, true],
 	["...", 0.5, true, true],
 	[" ", 1, true, true]
   ],
 "pre_wave_demo" : [
 	["Good job!", 0.1, true, true],
-	["Try it again!", 0.2, true, true],
+	["But wait. I have more", 0.2, true, true],
 	[" ", 1, true, true]
-  ],
+],
+"pre_wave_demo2" : [
+	["Don't even think you're winning!", 0.1, true, true],
+],
+"boss_dialog" : [
+	["I'm not going down without a fight.", 0.2, true, true],
+	["So you better give me all you've got!", 0.1, true, true]
+]
+  ,
   "wave1_demo" : [1, ["TopMid", "BottomMid"], 2],
   "wave1_subspawn": [0, ["CenterLeft", "CenterTop"], 2],
   "wave2_demo" : [1, ["TopMid", "MidLeft", "MidRight", "BottomMid"], 4],
   "wave3_demo" : [0, ["TopLeft", "TopRight", "BottomLeft", "BottomRight"], 4],
+  "boss_minions" : [1, ["CenterTop", "CenterLeft","BottomRight"], 3]
+,
   
   "death" : [
-	["Aww...", 0.1, true, true],
+	["Aww...who's bored now?", 0.1, true, true],
 	["Try again!", 0.1, true, true],
 	[" ", 1, true, true],
 ]

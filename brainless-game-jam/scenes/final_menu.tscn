@@ -100,6 +100,33 @@ rotation = 0.7437422
 scale = Vector2(0.53364277, 0.48638812)
 texture = ExtResource("5_ksaa4")
 
+[node name="TextureRect5" type="TextureRect" parent="."]
+offset_left = 953.00006
+offset_top = 66.00006
+offset_right = 1465.0
+offset_bottom = 578.00006
+rotation = 0.7437422
+scale = Vector2(0.53364277, 0.48638812)
+texture = ExtResource("5_ksaa4")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+offset_left = 18.00003
+offset_top = 166.00002
+offset_right = 530.0
+offset_bottom = 678.0
+rotation = -1.047957
+scale = Vector2(0.30540615, 0.2783621)
+texture = ExtResource("5_ksaa4")
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+offset_left = 811.0
+offset_top = 402.0
+offset_right = 1323.0
+offset_bottom = 914.0
+rotation = 1.5330029
+scale = Vector2(0.47213772, 0.42574766)
+texture = ExtResource("5_ksaa4")
+
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
