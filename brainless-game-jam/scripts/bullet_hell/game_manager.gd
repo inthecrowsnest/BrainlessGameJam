@@ -50,22 +50,22 @@ func _ready() -> void:
 	#
 	await walls.scale(boundary_box, 2.5, 2.5, 2.0)
 #
-	#await spawn_wave("wave1_demo") 
-	##spawn_wave("wave1_subspawn")
+	await spawn_wave("wave1_demo") 
+	#spawn_wave("wave1_subspawn")
+	
+	audio_stream_player.play()
 	#
-	#audio_stream_player.play()
-	##
-	#await on_wave_complete()
-	#
+	await on_wave_complete()
+	
 	if !skip:
 		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
 	#
 	await walls.scale(boundary_box, 3, 4.0, 2.0)
 	
-	#await spawn_wave("wave2_demo")
-	#
-	#await on_wave_complete()
-	#
+	await spawn_wave("wave2_demo")
+	
+	await on_wave_complete()
+	
 	if !skip: 
 		await main_text.add_text_chunk(dialogue_script["pre_wave_demo2"])
 	#
@@ -73,13 +73,13 @@ func _ready() -> void:
 	await walls.move_and_scale(boundary_box, 5.0, 4.0,
 		boundary_box.global_position.x - 130, boundary_box.global_position.y, 2.0)
 	
+	
+	await spawn_wave("wave3_demo")
 	#
-	#await spawn_wave("wave3_demo")
-	##
-	#await on_wave_complete()
+	await on_wave_complete()
 	
 #	boss size
-	#await main_text.add_text_chunk(dialogue_script["boss_dialog"])
+	await main_text.add_text_chunk(dialogue_script["boss_dialog"])
 	walls.move_and_scale(boundary_box, 10.5, 4.5, 
 	boundary_box.global_position.x - 250, boundary_box.global_position.y + 10, 2.0)
 	await main_text.size(main_text.textHolder, 0, 486.0, 2.0)
