@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://0o1s2ryoypp1"]
+[gd_scene load_steps=4 format=3 uid="uid://0o1s2ryoypp1"]
 
 [ext_resource type="Script" uid="uid://bsq0q8hfbx0bv" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://ckofuhb827yne" path="res://assets/Geo-Regular.ttf" id="2_ekxnf"]
 
 [sub_resource type="Theme" id="Theme_vue75"]
 default_font_size = 50
@@ -36,6 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_vue75")
+theme_override_fonts/font = ExtResource("2_ekxnf")
 text = "DON'T LEAVE ME DEMO"
 
 [node name="ColorRect" type="ColorRect" parent="."]

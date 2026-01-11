@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://crs7ia6pep5lq" path="res://scenes/enemy.tscn" id="1_arcc2"]
 [ext_resource type="PackedScene" uid="uid://cgbxshykbgxn8" path="res://scenes/player.tscn" id="1_klrle"]
-[ext_resource type="Resource" uid="uid://6yawc3e7ikv8" path="res://scripts/bullet_hell/bullet_resources/test_enemy.tres" id="3_ml0hh"]
-[ext_resource type="Resource" uid="uid://dnpt16v14ncyy" path="res://scripts/bullet_hell/bullet_resources/test_enemy2.tres" id="4_uknch"]
+[ext_resource type="Resource" uid="uid://6yawc3e7ikv8" path="res://scripts/bullet_hell/bullet_resources/4_45_1.0.tres" id="3_ml0hh"]
+[ext_resource type="Resource" uid="uid://dnpt16v14ncyy" path="res://scripts/bullet_hell/bullet_resources/2_45_0.5.tres" id="4_uknch"]
 [ext_resource type="Resource" uid="uid://cq2j67c8e7h5s" path="res://scripts/bullet_hell/bullet_resources/testenemy3.tres" id="5_dndny"]
 [ext_resource type="PackedScene" uid="uid://dyrhphvcmtnox" path="res://scenes/UI_Elements/boundaryBox.tscn" id="6_g2dab"]
 

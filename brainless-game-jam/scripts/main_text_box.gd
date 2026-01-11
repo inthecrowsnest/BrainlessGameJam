@@ -4,14 +4,17 @@ extends UITweener
 @onready var scroll = $Control/MainTextBox/ScrollContainer
 @onready var textbox = %RichTextLabel
 @onready var scrollbar = scroll.get_v_scroll_bar()
+@onready var blip: AudioStreamPlayer = %blip
 
+signal added_char
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	added_char.connect(play_blip)
 		
 func add_text_line(text : String, type_delay, first: bool, end: bool):
 	if first:
 		textbox.add_text("> ")
+		added_char.emit()
 	for c in text:
 		await get_tree().create_timer(type_delay).timeout
 		textbox.add_text(c)
@@ -29,4 +32,5 @@ func add_text_chunk(text_list: Array):
 		
 		await add_text_line(s, delay, first, end)
 	
-	
+func play_blip():
+	blip.play()

@@ -30,6 +30,7 @@ player=""
 enemies=""
 walls=""
 bullets=""
+boss=""
 
 [input]
 

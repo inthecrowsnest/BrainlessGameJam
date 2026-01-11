@@ -4,15 +4,7 @@ class_name EnemyData
 
 # This will contain interchangeable data to make different enemies
 @export var id : String
-@export var name : String
-@export var health : int = 100
-@export var speed : float = 30.0
-@export var texture : Texture # We can switch enemy sprites with this
 @export var bullets_per_shot := 1
-@export var type: String 
 @export var rotation_speed := 0.0
-#@export var shot_delay := 1.0
-
-
-# We can attach a script to this variable to create various enemy types with different behaviours: 
-@export var enemy_mechanics : Resource 
+@export var shot_delay := 1.0
+@export var position : Vector2
