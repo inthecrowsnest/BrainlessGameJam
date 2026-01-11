@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://blpqc5patdcck"]
+
+[ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_gvad8"]
+
+[resource]
+script = ExtResource("1_gvad8")
+id = "test"
+bullets_per_shot = 4
+rotation_speed = 45.0
+metadata/_custom_type_script = "uid://6jlwahgys00h"
