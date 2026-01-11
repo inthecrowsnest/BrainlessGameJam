@@ -98,4 +98,13 @@ position = Vector2(1, 108)
 [node name="BottomLeft" type="Marker2D" parent="Walls/EnemySpawnGroup"]
 position = Vector2(-144, 107)
 
+[node name="Random1" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(-106.666664, 50)
+
+[node name="Random2" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(-76.666664, -80)
+
+[node name="Random3" type="Marker2D" parent="Walls/EnemySpawnGroup"]
+position = Vector2(66.666664, -47.5)
+
 [node name="player_spawn" type="Marker2D" parent="Walls"]

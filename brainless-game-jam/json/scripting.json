@@ -34,7 +34,8 @@
 ]
   ,
   "wave1_demo" : [1, ["TopMid", "BottomMid"], 2],
-  "wave1_subspawn": [0, ["CenterLeft", "CenterTop"], 2],
+  "wave1.2": [0, ["CenterLeft", "CenterTop"], 2],
+  "wave1.3": [0, ["Random3", "TopRight","Random1"], 3],
   "wave2_demo" : [1, ["TopMid", "MidLeft", "MidRight", "BottomMid"], 4],
   "wave3_demo" : [0, ["TopLeft", "TopRight", "BottomLeft", "BottomRight"], 4],
   "boss_minions" : [1, ["CenterTop", "CenterLeft","BottomRight"], 3]

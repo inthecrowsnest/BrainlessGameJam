@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://6yawc3e7ikv8"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dlhlyewcx7wfn"]
 
 [ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_gvad8"]
 

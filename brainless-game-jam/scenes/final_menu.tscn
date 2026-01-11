@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://duiu5tshtcc2j"]
+[gd_scene load_steps=7 format=3 uid="uid://ck2262uoxbcqs"]
 
 [ext_resource type="Script" uid="uid://sgpr5xvcjq8b" path="res://scripts/canvas_layer.gd" id="1_3iht6"]
 [ext_resource type="FontFile" uid="uid://ckofuhb827yne" path="res://assets/Geo-Regular.ttf" id="2_iv38b"]
@@ -52,6 +52,7 @@ offset_left = 451.0
 offset_top = 231.0
 offset_right = 651.0
 offset_bottom = 281.0
+theme_override_fonts/font = ExtResource("2_iv38b")
 text = "Start"
 
 [node name="Button2" type="Button" parent="."]
@@ -61,6 +62,7 @@ offset_left = 454.0
 offset_top = 295.0
 offset_right = 654.0
 offset_bottom = 349.0
+theme_override_fonts/font = ExtResource("2_iv38b")
 text = "Quit
 "
 
@@ -74,19 +76,19 @@ scale = Vector2(0.8294442, 0.75599605)
 texture = ExtResource("3_5hqir")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_left = 291.99994
-offset_top = 196.99997
-offset_right = 803.99994
-offset_bottom = 709.0
+offset_left = 305.0
+offset_top = 191.0
+offset_right = 817.0
+offset_bottom = 703.0
 rotation = 0.7437422
 scale = Vector2(0.26087338, 0.23777276)
 texture = ExtResource("4_6ifub")
 
 [node name="TextureRect3" type="TextureRect" parent="."]
-offset_left = 384.0
-offset_top = 115.99999
-offset_right = 896.0
-offset_bottom = 628.0
+offset_left = 357.00003
+offset_top = 138.00006
+offset_right = 869.0
+offset_bottom = 650.00006
 rotation = 0.7437422
 scale = Vector2(0.26087338, 0.23777276)
 texture = ExtResource("4_6ifub")
@@ -127,9 +129,56 @@ rotation = 1.5330029
 scale = Vector2(0.47213772, 0.42574766)
 texture = ExtResource("5_ksaa4")
 
+[node name="BoxContainer" type="BoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 100)
+offset_left = 845.0
+offset_top = 534.0
+offset_right = 1145.0
+offset_bottom = 634.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="BoxContainer"]
+layout_mode = 2
+text = "Volume"
+
+[node name="Volume" type="HSlider" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -60.0
+max_value = 0.0
+step = 0.5
+value = -40.0
+tick_count = 10
+ticks_position = 3
+
+[node name="PlayerRotation Speed8" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 25)
+offset_left = 844.0
+offset_top = 546.0
+offset_right = 1144.0
+offset_bottom = 571.0
+
+[node name="Label" type="Label" parent="PlayerRotation Speed8"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Rotation speed"
+
+[node name="PlayerRotation" type="HSlider" parent="PlayerRotation Speed8"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 10.0
+step = 10.0
+value = 100.0
+tick_count = 10
+ticks_position = 3
+
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Button2" to="." method="_on_button_2_mouse_entered"]
 [connection signal="mouse_exited" from="Button2" to="." method="_on_button_2_mouse_exited"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="value_changed" from="BoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="PlayerRotation Speed8/PlayerRotation" to="." method="_on_player_rotation_value_changed"]
