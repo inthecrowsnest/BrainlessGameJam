@@ -10,6 +10,7 @@ var current_wave_name : String;
 var walls;
 var skip = false;
 var boss;
+var boss_beaten : bool = false
 signal wave_complete
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -74,21 +75,22 @@ func _ready() -> void:
 	
 	await spawn_boss()
 	
-	while boss.health >= 0:
+	while boss.health >= 960:
+		boss_beaten = false
 		await get_tree().create_timer(5).timeout
-		switch_boss_state(false)
-	
+		switch_boss_state()
+		
+	if boss_beaten:
 	# call boss "impossible round"
-	switch_boss_state(true)
-	print('Boss entered true state')
+		switch_boss_state()
+		print('Boss entered true state')
 #	after 15 seconds, clear all bullets and stop firing
-	await get_tree().create_timer(15).timeout
-	boss.process_mode = boss.PROCESS_MODE_DISABLED
-	boss.setup_enemy_data(Global.boss_states[4]) # state that has boss not shoot at all
-	get_tree().call_group("bullets", "queue_free")
-	boss.health = 10000.0 #make sure cant kill boss here
+		await get_tree().create_timer(15).timeout
+		boss.process_mode = boss.PROCESS_MODE_DISABLED
+		boss.setup_enemy_data(Global.boss_states[4]) # state that has boss not shoot at all
+		get_tree().call_group("bullets", "queue_free")
+		boss.health = 10000.0 #make sure cant kill boss here
 #	main_text.add_text_chunk(dialogue_script["boss_defeat"])
-	
 func spawn_wave(wave_name: String):
 	current_wave_name = wave_name
 	var enemy_list = dialogue_script[wave_name]
@@ -99,6 +101,7 @@ func spawn_wave(wave_name: String):
 	spawn_enemy_data(enemy_type, spawn_location, enemy_num)
 	
 func spawn_player():
+	
 	boundary_box.visible = true
 	var spawned_player = player.instantiate()
 	spawned_player.transform = walls.find_child("player_spawn").global_transform
@@ -117,9 +120,9 @@ func spawn_boss():
 	boss.add_to_group('boss')
 	get_parent().add_child.call_deferred(boss)
 	
-func switch_boss_state(final: bool):
+func switch_boss_state():
 	var data
-	if !final:
+	if !boss_beaten:
 		var state = randi_range(0, 2)
 		print("switching to state =", state)
 		data = Global.boss_states[state]
@@ -153,10 +156,12 @@ func on_enemy_death():
 func on_player_death():
 #	respawn player
 	spawn_player()
+	get_tree().call_group("bullets","queue_free")
+	
 #	clear all bullets to prevent spawn damage
 	if current_wave_name != "boss":
 		get_tree().call_group("bullets", "queue_free")
-		get_tree().call_group("enemies", "queue_free")
+		#get_tree().call_group("enemies", "queue_free")
 		main_text.add_text_chunk(dialogue_script["death"])
 		spawn_wave(current_wave_name)
 	

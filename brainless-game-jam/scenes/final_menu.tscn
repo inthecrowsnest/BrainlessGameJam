@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://duiu5tshtcc2j"]
+
+[ext_resource type="Script" uid="uid://sgpr5xvcjq8b" path="res://scripts/canvas_layer.gd" id="1_3iht6"]
+[ext_resource type="FontFile" uid="uid://ckofuhb827yne" path="res://assets/Geo-Regular.ttf" id="2_iv38b"]
+[ext_resource type="Texture2D" uid="uid://wmmja71n7qtc" path="res://assets/sprites/Brainless_Player.png" id="3_5hqir"]
+[ext_resource type="Texture2D" uid="uid://drvkaoxtcf388" path="res://assets/sprites/Brainless_Bullet.png" id="4_6ifub"]
+[ext_resource type="Texture2D" uid="uid://bxb5nait566cg" path="res://assets/sprites/Brainless_MiscEnemy.png" id="5_ksaa4"]
+
+[sub_resource type="Theme" id="Theme_5hqir"]
+default_font_size = 50
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_3iht6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(0, 0.5568628, 0.05882353, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -248.99998
+offset_right = 260.0
+offset_bottom = -164.99998
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4008985, 1.782349)
+size_flags_horizontal = 4
+theme = SubResource("Theme_5hqir")
+theme_override_fonts/font = ExtResource("2_iv38b")
+theme_override_font_sizes/font_size = 64
+text = "DON'T LEAVE ME "
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+offset_left = 451.0
+offset_top = 231.0
+offset_right = 651.0
+offset_bottom = 281.0
+text = "Start"
+
+[node name="Button2" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+offset_left = 454.0
+offset_top = 295.0
+offset_right = 654.0
+offset_bottom = 349.0
+text = "Quit
+"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 171.0
+offset_top = 106.0
+offset_right = 683.0
+offset_bottom = 618.0
+rotation = 0.7437422
+scale = Vector2(0.8294442, 0.75599605)
+texture = ExtResource("3_5hqir")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 291.99994
+offset_top = 196.99997
+offset_right = 803.99994
+offset_bottom = 709.0
+rotation = 0.7437422
+scale = Vector2(0.26087338, 0.23777276)
+texture = ExtResource("4_6ifub")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 384.0
+offset_top = 115.99999
+offset_right = 896.0
+offset_bottom = 628.0
+rotation = 0.7437422
+scale = Vector2(0.26087338, 0.23777276)
+texture = ExtResource("4_6ifub")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = 953.00006
+offset_top = 66.00006
+offset_right = 1465.0
+offset_bottom = 578.00006
+rotation = 0.7437422
+scale = Vector2(0.53364277, 0.48638812)
+texture = ExtResource("5_ksaa4")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Button2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="Button2" to="." method="_on_button_2_mouse_exited"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
