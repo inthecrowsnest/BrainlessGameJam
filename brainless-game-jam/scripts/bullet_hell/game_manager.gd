@@ -154,8 +154,8 @@ func on_player_death():
 #	respawn player
 	spawn_player()
 #	clear all bullets to prevent spawn damage
-	get_tree().call_group("bullets", "queue_free")
 	if current_wave_name != "boss":
+		get_tree().call_group("bullets", "queue_free")
 		get_tree().call_group("enemies", "queue_free")
 		main_text.add_text_chunk(dialogue_script["death"])
 		spawn_wave(current_wave_name)
