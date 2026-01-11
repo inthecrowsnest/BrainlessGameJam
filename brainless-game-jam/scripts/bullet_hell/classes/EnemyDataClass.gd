@@ -7,3 +7,4 @@ class_name EnemyData
 @export var bullets_per_shot := 1
 @export var rotation_speed := 0.0
 @export var shot_delay := 1.0
+@export var position : Vector2

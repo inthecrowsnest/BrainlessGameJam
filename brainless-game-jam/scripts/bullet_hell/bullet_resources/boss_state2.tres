@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dipvn2l3fdo0a"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://bnxbtuhtdkrok"]
 
 [ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_8447v"]
 
@@ -8,4 +8,5 @@ id = "BossState2"
 bullets_per_shot = 15
 rotation_speed = 180.0
 shot_delay = 0.5
+position = Vector2(700, 200)
 metadata/_custom_type_script = "uid://6jlwahgys00h"

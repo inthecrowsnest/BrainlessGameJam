@@ -41,7 +41,8 @@ func _ready() -> void:
 	#
 	await walls.scale(boundary_box, 2.5, 2.5, 2.0)
 #
-	await spawn_wave("wave1_demo")
+	await spawn_wave("wave1_demo") 
+	#spawn_wave("wave1_subspawn")
 	#
 	await on_wave_complete()
 	#
@@ -73,12 +74,13 @@ func _ready() -> void:
 	
 	await spawn_boss()
 	
-	while boss.health >= 700:
-		await get_tree().create_timer(15).timeout
+	while boss.health >= 0:
+		await get_tree().create_timer(5).timeout
 		switch_boss_state(false)
 	
 	# call boss "impossible round"
 	switch_boss_state(true)
+	print('Boss entered true state')
 #	after 15 seconds, clear all bullets and stop firing
 	await get_tree().create_timer(15).timeout
 	boss.process_mode = boss.PROCESS_MODE_DISABLED
@@ -112,11 +114,11 @@ func spawn_boss():
 	boss.transform = topmid.global_transform
 	boss.scale = Vector2(0.4, 0.4)
 	boss.health = 1000.0
+	boss.add_to_group('boss')
 	get_parent().add_child.call_deferred(boss)
 	
 func switch_boss_state(final: bool):
 	var data
-	
 	if !final:
 		var state = randi_range(0, 2)
 		print("switching to state =", state)
@@ -124,10 +126,12 @@ func switch_boss_state(final: bool):
 		boss._ready()
 	else: 
 		print("final round")
-		data = Global.boss_states[3]	
+		data = Global.boss_states[3]
 		boss._ready()
 	boss.setup_enemy_data(data)
-
+	boss.position = boss.EnemyDataFile.position 
+	print(boss.position)
+	
 func spawn_enemy_data(i, spawn_group, num_of_enemies):
 	var enemy_type = Global.enemy_dictionaries[i].file
 	current_wave = num_of_enemies

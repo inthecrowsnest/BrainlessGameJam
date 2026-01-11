@@ -50,7 +50,7 @@ func hurt(damage):
 	health -= damage
 	print(health)
 	
-	if health <= 0:
+	if health <= 0 and !self.is_in_group('boss'):
 		emit_signal("enemy_death")
 		self.queue_free()
 	

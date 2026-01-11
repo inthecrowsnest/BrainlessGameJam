@@ -25,8 +25,10 @@
 	[" ", 1, true, true]
   ],
   "wave1_demo" : [1, ["TopMid", "BottomMid"], 2],
+  "wave1_subspawn": [0, ["CenterLeft", "CenterTop"], 2],
   "wave2_demo" : [1, ["TopMid", "MidLeft", "MidRight", "BottomMid"], 4],
   "wave3_demo" : [0, ["TopLeft", "TopRight", "BottomLeft", "BottomRight"], 4],
+  
   "death" : [
 	["Aww...", 0.1, true, true],
 	["Try again!", 0.1, true, true],
