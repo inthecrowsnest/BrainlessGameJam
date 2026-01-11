@@ -1,13 +1,15 @@
 # Base class for all enemy instances
 extends CharacterBody2D
 class_name Enemy
+@onready var sprite_2d: Sprite2D = %Sprite2D
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 @export var EnemyDataFile : EnemyData 
 @export var radius = 0.1
 var health = 100.0
 
 signal enemy_death
-
+signal hurted
 ## DEMO ---------------------------
 #var bullet_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_bullet.tres")
 #var enemy_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_enemy.tres")
@@ -21,7 +23,8 @@ func setup_enemy_data(data):
 	var load_data = load(data)
 	EnemyDataFile = load_data 
 
-
+func _ready() -> void:
+	hurted.connect(on_hurt)
 # this function will take the amount of bullets the character will spawn and set a marker group up 
 # equadistant from each other. since they will be nodes, they will rotate with the enemy,
 # which will allow for directional shooting
@@ -49,13 +52,16 @@ func spawn_bullet(marker_group):
 func hurt(damage):
 	health -= damage
 	print(health)
-	
+	hurted.emit()
 	if health <= 0 and !self.is_in_group('boss'):
 		emit_signal("enemy_death")
 		self.queue_free()
 	
-	
-	
+func on_hurt():
+	audio_stream_player.play()
+	sprite_2d.modulate = "#c72dd8"
+	await get_tree().create_timer(0.2).timeout
+	sprite_2d.modulate = "#ffffff"
 	
 	
 	
