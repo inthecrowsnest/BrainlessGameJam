@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgbxshykbgxn8"]
+[gd_scene load_steps=5 format=3 uid="uid://cgbxshykbgxn8"]
 
 [ext_resource type="Script" uid="uid://113elroklowj" path="res://player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://wmmja71n7qtc" path="res://assets/sprites/Brainless_Player.png" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://cvlyoilrns201" path="res://assets/sounds/lazer-gun-432285.mp3" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(128, 129)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
+
+[node name="shoot_sfx" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_qhqgy")
+volume_db = -10.0
+pitch_scale = 0.56
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(22, -2)

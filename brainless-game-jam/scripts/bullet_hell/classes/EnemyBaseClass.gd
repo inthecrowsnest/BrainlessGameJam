@@ -44,6 +44,7 @@ func spawn_bullet(marker_group):
 		spawnedBullet.transform = marker.global_transform
 		spawnedBullet.bullet_owner = 'enemies'
 		spawnedBullet.add_to_group("bullets")
+		
 	
 func hurt(damage):
 	health -= damage
