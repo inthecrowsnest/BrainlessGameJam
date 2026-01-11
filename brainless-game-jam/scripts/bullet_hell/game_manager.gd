@@ -59,8 +59,6 @@ func _ready() -> void:
 	
 	await spawn_wave("wave1_demo") 
 	
-	spawn_wave("wave1.2")
-	
 	#
 	await on_wave_complete()
 	#

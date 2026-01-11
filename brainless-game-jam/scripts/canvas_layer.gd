@@ -26,3 +26,10 @@ func _on_button_2_mouse_entered() -> void:
 
 func _on_button_2_mouse_exited() -> void:
 	button_2.modulate = "#ffffff"
+
+
+func _on_volume_value_changed(value: float) -> void:
+	Global.volume = value
+
+func _on_player_rotation_value_changed(value: float) -> void:
+	Global.player_rotation = value
