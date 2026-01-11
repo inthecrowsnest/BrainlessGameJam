@@ -16,18 +16,22 @@ var enemy_dictionaries = [
  {
 	'name': "4 bullet / 45 rotate",
 	'type': 'resource',
-	'file': "res://scripts/bullet_hell/bullet_resources/test_enemy.tres" 
+	'file': "res://scripts/bullet_hell/bullet_resources/4_45_1.0.tres" 
  },
  {
-	'name':'2 bullet / 90 rotate',
+	'name':'2 bullet / 45 rotate / 0.5 shot delay',
 	'type': 'resource',
-	'file': "res://scripts/bullet_hell/bullet_resources/test_enemy2.tres"
+	'file': "res://scripts/bullet_hell/bullet_resources/2_45_0.5.tres"
  }
 ]
 
-var level_dictionary = {
-	'level-1': preload("res://scenes/test_scenes/bullet_hell_demo.tscn"),
-}
+var boss_states = [
+	"res://scripts/bullet_hell/bullet_resources/boss_state1.tres",
+	"res://scripts/bullet_hell/bullet_resources/boss_state2.tres",
+	"res://scripts/bullet_hell/bullet_resources/boss_state3.tres",
+	"res://scripts/bullet_hell/bullet_resources/boss_stateFINAL.tres",
+	"res://scripts/bullet_hell/bullet_resources/boss_stateDEFEAT.tres"
+]
 
 # When this variable is false, the game ends
 var game_state : bool = true 
@@ -38,7 +42,7 @@ var dialog_playing : bool = false
 # –––––––––––––––––––––––––——————————————————————————————––––––––––––––––––––––––––––
 # DEMO ---------------------------
 var bullet_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_bullet.tres")
-var enemy_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_enemy.tres")
+#var enemy_test_data = preload("res://scripts/bullet_hell/bullet_resources/test_enemy.tres")
 var bullet_file = preload("res://scenes/bullet.tscn")
 var enemy_file = preload('res://scenes/enemy.tscn')
 # ---------------------

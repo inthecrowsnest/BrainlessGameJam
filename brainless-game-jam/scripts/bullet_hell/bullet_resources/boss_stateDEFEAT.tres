@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cn44qgrl0qmes"]
+
+[ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_ty4x8"]
+
+[resource]
+script = ExtResource("1_ty4x8")
+id = "BossStateDEFEAT"
+bullets_per_shot = 0
+shot_delay = 0.0
+metadata/_custom_type_script = "uid://6jlwahgys00h"

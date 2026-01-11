@@ -4,7 +4,7 @@ class_name Enemy
 
 @export var EnemyDataFile : EnemyData 
 @export var radius = 0.1
-@onready var health = Global.enemy_health
+var health = 100.0
 
 signal enemy_death
 
@@ -17,6 +17,7 @@ signal enemy_death
 # The parameter data refers to a resource object (.tres) which we will assign to the variable EnemyData
 # In this way we can generate different type of enemies depending on their resource sheets
 func setup_enemy_data(data):
+	print(data)
 	var load_data = load(data)
 	EnemyDataFile = load_data 
 
