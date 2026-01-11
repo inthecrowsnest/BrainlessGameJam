@@ -8,6 +8,7 @@ var bullet_file = preload("res://scenes/bullet.tscn")
 @onready var shoot_sfx: AudioStreamPlayer = %shoot_sfx
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var hurt_sfx: AudioStreamPlayer = %hurt_sfx
+@onready var hitbox : CollisionShape2D = $HitBox
 
 signal player_death
 signal player_shoot
