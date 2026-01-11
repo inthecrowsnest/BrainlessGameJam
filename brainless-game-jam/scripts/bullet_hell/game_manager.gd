@@ -12,10 +12,18 @@ var skip = false;
 var boss;
 var double_boss; # will spawn on top of the boss in final stage
 var boss_unbeaten : bool = true
+var not_boss_stage :bool = false
+var count :int = 0
 signal wave_complete
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 @onready var blip_sound = %blip
 
+
+var random_wave = {
+		1: "wave1.2",
+		2: "wave1.3",
+		3: "wave2_demo",
+	}
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("main_menu"):
 		get_tree().call_group("bullets", "queue_free")
@@ -47,10 +55,12 @@ func _ready() -> void:
 	#
 	await walls.scale(boundary_box, 2.5, 2.5, 2.0)
 #
-	await spawn_wave("wave1_demo") 
-	#spawn_wave("wave1_subspawn")
-	
 	audio_stream_player.play()
+	
+	await spawn_wave("wave1_demo") 
+	
+	spawn_wave("wave1.2")
+	
 	#
 	await on_wave_complete()
 	#
@@ -80,11 +90,13 @@ func _ready() -> void:
 	await walls.move_and_scale(boundary_box, 10.5, 4.5, 
 	boundary_box.global_position.x - 250, boundary_box.global_position.y + 10, 2.0)
 	main_text.queue_free()
-	
+	not_boss_stage = true
 	await spawn_boss(false)
+	
 	
 	while boss.health >= 500: 
 		await get_tree().create_timer(5).timeout
+		random_wave_gen()
 		switch_boss_state()
 		
 	boss_unbeaten = false
@@ -94,6 +106,13 @@ func _ready() -> void:
 	await get_tree().create_timer(15).timeout
 	boss.process_mode = boss.PROCESS_MODE_DISABLED # disable boss
 	double_boss.process_mode = boss.PROCESS_MODE_DISABLED # disable doubled boss
+	
+func random_wave_gen():
+	count += 1
+	if count >= 3:
+		return
+	spawn_wave(random_wave[count])
+	
 	
 	
 func spawn_wave(wave_name: String):
@@ -172,15 +191,14 @@ func on_enemy_death():
 func on_player_death():
 #	respawn player
 	spawn_player()
-
+	
 #	clear all bullets to prevent spawn damage
-	if current_wave_name != "boss":
+	if !not_boss_stage:
 		get_tree().call_group("bullets", "queue_free")
 		get_tree().call_group("enemies", "queue_free")
 		main_text.add_text_chunk(dialogue_script["death"])
 		spawn_wave(current_wave_name)
-	
-		
+
 func on_wave_complete():
 	await wave_complete
 #	clear all bullets on screen after wave clear
