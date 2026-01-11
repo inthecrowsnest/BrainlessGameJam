@@ -17,6 +17,9 @@ signal hurted
 func _ready() -> void:
 	player_shoot.connect(on_shoot)
 	hurted.connect(on_hurt)
+	shoot_sfx.volume_db = Global.volume
+	hurt_sfx.volume_db = Global.volume
+	
 func spawn_bullet(data, spawn):
 	var bullet_data = data
 	var spawnedBullet = bullet_file.instantiate()
@@ -39,6 +42,7 @@ func hurt(damage):
 	
 func on_shoot():
 	shoot_sfx.play()
+	
 func on_hurt():
 	hurt_sfx.play()
 	sprite_2d.modulate = "#1d2800"

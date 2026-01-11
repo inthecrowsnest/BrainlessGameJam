@@ -10,6 +10,7 @@ var player_fire_delay = 0.2
 var enemy_fire_delay = 1
 var player_health = 100
 var enemy_health = 100
+var volume = -40.0
 
 # –––––––––––––––––– Feel free to modify any data inside here - Jack ——————————
 var enemy_dictionaries = [

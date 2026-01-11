@@ -15,6 +15,7 @@ extends Player
 var rotation_direction = 0
 var is_shooting = false 
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
 		is_shooting = true
@@ -32,8 +33,3 @@ func _physics_process(delta):
 	if is_shooting and bullet_timer.is_stopped():
 		bullet_timer.start(fire_delay)
 		spawn_bullet(bullet_test_data, %BulletSpawnPoint)
-	#
-#func shoot():
-	#var b = bullet.instantiate()
-	#owner.add_child(b)
-	#b.transform = %BulletSpawnPoint.global_transform

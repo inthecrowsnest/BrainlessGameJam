@@ -35,3 +35,7 @@ func _on_player_health_value_changed(value: float) -> void:
 
 func _on_enemy_health_value_changed(value: float) -> void:
 	Global.enemy_health = value
+
+
+func _on_volume_value_changed(value: float) -> void:
+	Global.volume = value

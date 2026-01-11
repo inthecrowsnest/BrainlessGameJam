@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_uqgmj")
 id = "BossStateFINAL"
-bullets_per_shot = 25
+bullets_per_shot = 12
 rotation_speed = 10.0
-shot_delay = 0.001
+shot_delay = 0.2
+position = Vector2(563.85, 219.2)
 metadata/_custom_type_script = "uid://6jlwahgys00h"
