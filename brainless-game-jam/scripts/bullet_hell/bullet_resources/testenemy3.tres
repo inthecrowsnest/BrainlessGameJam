@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cq2j67c8e7h5s"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cq2j67c8e7h5s"]
 
 [ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_w726w"]
+[ext_resource type="Texture2D" uid="uid://bxb5nait566cg" path="res://assets/sprites/Brainless_MiscEnemy.png" id="2_ojps3"]
 
 [resource]
 script = ExtResource("1_w726w")
 id = "test3"
-name = "Ugly Godot girl"
 bullets_per_shot = 4
 rotation_speed = 5.0
+texture = ExtResource("2_ojps3")
 metadata/_custom_type_script = "uid://6jlwahgys00h"

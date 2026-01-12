@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://crs7ia6pep5lq"]
 
 [ext_resource type="Script" uid="uid://dnmro475igkpq" path="res://scripts/bullet_hell/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://bxb5nait566cg" path="res://assets/sprites/Brainless_MiscEnemy.png" id="2_md0e3"]
+[ext_resource type="Texture2D" uid="uid://bwl524awccosq" path="res://assets/sprites/Brainless_Boss.png" id="2_4ra3w"]
 [ext_resource type="AudioStream" uid="uid://bsvqcld3ts5po" path="res://assets/sounds/sfx-hurt.wav" id="3_4ra3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
@@ -14,7 +14,7 @@ script = ExtResource("1_md0e3")
 unique_name_in_owner = true
 position = Vector2(-1, -5)
 scale = Vector2(0.28515625, 0.25195313)
-texture = ExtResource("2_md0e3")
+texture = ExtResource("2_4ra3w")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1.5)

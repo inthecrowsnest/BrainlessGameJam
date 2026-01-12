@@ -8,3 +8,4 @@ class_name EnemyData
 @export var rotation_speed := 0.0
 @export var shot_delay := 1.0
 @export var position : Vector2
+@export var texture : Texture2D

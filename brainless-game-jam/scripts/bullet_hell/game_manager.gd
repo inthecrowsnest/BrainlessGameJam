@@ -15,8 +15,11 @@ var boss_unbeaten : bool = true
 var not_boss_stage :bool = false
 var count :int = 0
 signal wave_complete
-@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+
 @onready var blip_sound = %blip
+@onready var boss_music: AudioStreamPlayer = %BossMusic
+@onready var first_stage: AudioStreamPlayer = %FirstStage
+@onready var second_stage: AudioStreamPlayer = %SecondStage
 
 
 var random_wave = {
@@ -35,7 +38,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		skip = true
 
 func _ready() -> void:
-	audio_stream_player.volume_db = Global.volume
+	boss_music.volume_db = Global.volume
+	first_stage.volume_db = Global.volume
+	second_stage.volume_db = Global.volume
 	blip_sound.volume_db = Global.volume
 	walls = boundary_box.find_child("Walls")
 	boundary_box.visible = false
@@ -54,8 +59,8 @@ func _ready() -> void:
 		await main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
 	#
 	await walls.scale(boundary_box, 2.5, 2.5, 2.0)
-#
-	audio_stream_player.play()
+	first_stage.play()
+	
 	
 	await spawn_wave("wave1_demo") 
 	
@@ -65,6 +70,7 @@ func _ready() -> void:
 	if !skip:
 		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
 	#
+	second_stage.play()
 	await walls.scale(boundary_box, 3, 4.0, 2.0)
 	
 	await spawn_wave("wave2_demo")
@@ -82,6 +88,7 @@ func _ready() -> void:
 	await spawn_wave("wave3_demo")
 	#
 	await on_wave_complete()
+	boss_music.play()
 	
 #	boss size
 	await main_text.add_text_chunk(dialogue_script["boss_dialog"])

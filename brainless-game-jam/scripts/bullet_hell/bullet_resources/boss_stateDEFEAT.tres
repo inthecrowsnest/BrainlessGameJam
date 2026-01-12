@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cn44qgrl0qmes"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cta23c0p7q7jf"]
 
 [ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_ty4x8"]
+[ext_resource type="Texture2D" uid="uid://bwl524awccosq" path="res://assets/sprites/Brainless_Boss.png" id="2_v27cj"]
 
 [resource]
 script = ExtResource("1_ty4x8")
 id = "BossStateDEFEAT"
 bullets_per_shot = 0
 shot_delay = 0.0
+texture = ExtResource("2_v27cj")
 metadata/_custom_type_script = "uid://6jlwahgys00h"

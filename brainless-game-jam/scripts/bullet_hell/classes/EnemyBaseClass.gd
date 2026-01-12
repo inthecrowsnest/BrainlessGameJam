@@ -1,8 +1,9 @@
 # Base class for all enemy instances
 extends CharacterBody2D
 class_name Enemy
-@onready var sprite_2d: Sprite2D = %Sprite2D
+
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
+@onready var sprite_2d: Sprite2D = %Sprite2D
 
 @export var EnemyDataFile : EnemyData 
 @export var radius = 0.1
@@ -21,7 +22,8 @@ signal hurted
 func setup_enemy_data(data):
 	print(data)
 	var load_data = load(data)
-	EnemyDataFile = load_data 
+	EnemyDataFile = load_data
+
 
 func _ready() -> void:
 	hurted.connect(on_hurt)

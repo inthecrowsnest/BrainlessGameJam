@@ -1,5 +1,6 @@
 extends Enemy
 
+
 @onready var marker_group := %markerGroup
 @onready var timer := %shotTimer
 #@onready var shot_delay = Global.enemy_fire_delay
@@ -11,6 +12,7 @@ extends Enemy
 func _ready() -> void:
 	setup_bullet_spawns(EnemyDataFile.bullets_per_shot, marker_group, $".")
 	timer.start(EnemyDataFile.shot_delay)
+	sprite_2d.texture = EnemyDataFile.texture
 
 func _process(delta: float) -> void:
 	self.rotation_degrees -= EnemyDataFile.rotation_speed * delta

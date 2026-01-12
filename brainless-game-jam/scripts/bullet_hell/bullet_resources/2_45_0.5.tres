@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dnpt16v14ncyy"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cllt8m2rwbf5x"]
 
 [ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_tclis"]
+[ext_resource type="Texture2D" uid="uid://bxb5nait566cg" path="res://assets/sprites/Brainless_MiscEnemy.png" id="2_khw16"]
 
 [resource]
 script = ExtResource("1_tclis")
@@ -8,4 +9,5 @@ id = "Type2"
 bullets_per_shot = 2
 rotation_speed = 45.0
 shot_delay = 0.5
+texture = ExtResource("2_khw16")
 metadata/_custom_type_script = "uid://6jlwahgys00h"

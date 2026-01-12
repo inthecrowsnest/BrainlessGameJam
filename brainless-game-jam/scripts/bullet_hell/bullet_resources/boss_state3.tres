@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dk28j0ouu66ue"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=3 format=3 uid="uid://cu6maxc8uasfn"]
 
 [ext_resource type="Script" uid="uid://6jlwahgys00h" path="res://scripts/bullet_hell/classes/EnemyDataClass.gd" id="1_1plmn"]
+[ext_resource type="Texture2D" uid="uid://bwl524awccosq" path="res://assets/sprites/Brainless_Boss.png" id="2_i58b1"]
 
 [resource]
 script = ExtResource("1_1plmn")
@@ -8,4 +9,5 @@ id = "BossState1"
 bullets_per_shot = 20
 rotation_speed = 45.0
 position = Vector2(320, 300)
+texture = ExtResource("2_i58b1")
 metadata/_custom_type_script = "uid://6jlwahgys00h"
