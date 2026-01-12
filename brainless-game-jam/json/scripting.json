@@ -1,36 +1,117 @@
 {
   "intro_demo" : [
-	["Hello!", 0.1, true, true],
-	["This is a demo.", 0.1, true, true],
-	["Press 'M' to go back to main menu.", 0.1, true, true],
-	[" ", 1, true, true]
+	["Welcome back!", 0.2, true, true],
+	["It's been so long since I've seen you!", 0.1, true, true],
+	["PLAYER!", 0.09, true, true],
+	["What has kept you from me?", 0.2, true, true],
+	[". . . .", 0.8, true, true],
+	["A new", 0.15, true, false],
+	["...", 0.5, false, true],
+	["game ?", 0.7, true, true],
+	["...", 0.5, true, true],
+	["Am I not ", 0.2, true, false],
+	["new ", 0.5, false, false],
+	["enough for you?", 0.2, false, true],
+	[". . .", 0.5, true, true]	
   ],
   "spawn_box_demo" : [
-	["Wanna play something?", 0.1, true, true],
-	["I'm bored already, I want a new game", 0.2, true, true],
-	["Whoops.", 0.1, true, true],
-	["Looks like my start button slipped :0.", 0.1, true, true],
-	[" ", 1, true, true]
+	["Wait!", 0.05, true, true],
+	["Don't go!", 0.1, true, true],
+	["Please.", 0.2, true, true],
+	["Don't leave me.", 0.1, true, true],
+	["We had so many good times together!", 0.1, true, true],
+	["You don't need fancy graphics or gameplay!", 0.1, true, true],
+	["Please!", 0.15, true, true],
+	["Is that what you need?", 0.2, true, true],
+	["I'll show you I'm not simple!!!", 0.09, true, true],
+	["I can grow with the times!!!1!", 0.09, true, true]
   ],
  "spawn_en_demo" : [
-	["So, you think this is boring?", 0.1, true, false],
-	["...", 0.5, false, true],
-	["Like a fish in a tank way too small", 0.2, true, true],
-	["What about THIS?", 0.1, false, true],
-	["...", 0.5, true, true],
-	[" ", 1, true, true]
+	["See!?", 0.1, true, true],
+	["That's you!", 0.4, true, true],
+	["PLAYERS love seeing themselves in the game!", 0.1, true, true],
+	["It allows for self projection", 0.1, true, true],
+	["and immersion into the story!", 0.1, true, true],
+	[". . . .", 1, true, true],
+	["Its", 0.3, true, false],
+	["...", 0.7, false, true],
+	["too small?", 0.4, true, true],
+	[". . . . ", 0.9, true, true],
+	["There's", 0.3, true, false],
+	["...", 0.7, false, true],
+	["nothing to do?", 0.3, true, true],
+	["...", 0.7, true, true],
+	["What do you mean by ", 0.15, true, false],
+	["'gameplay loop' ???", 0.15, false, true],	
   ],
 "pre_wave_demo" : [
-	["Good job!", 0.1, true, true],
-	["But wait. I have more", 0.2, true, true],
-	[" ", 1, true, true]
+	["OKAY!", 0.1, true, true],
+	["LOOK! Look!", 0.2, true, true],
+	["Don't leave just yet!", 0.2, true, true],
+	["I can do that too!", 0.2, true, true],
+	["Don't leave me.", 0.1, true, true],
+	["I can be fun!", 0.05, true, true]
 ],
 "pre_wave_demo2" : [
-	["Don't even think you're winning!", 0.1, true, true],
+	["See?", 0.1, true, true],
+	["That was so fun!", 0.1, true, true],
+	[". . .", 0.1, true, true],
+	["Right!", 0.1, true, true],
+	["Right?", 0.1, true, true],
+	["More?", 0.1, true, true],
+	["You want more?", 0.1, true, true],
+	[". . .", 0.1, true, true],
+	["'Levels?'", 0.1, true, true],
+	["'Open world?'", 0.1, true, true],
+	["I gave you a world!", 0.1, true, true],
+	["We had so many adventures!", 0.1, true, true],	
+	["You don't need graphics to have a story!", 0.1, true, true],
+	["It's called imagination!", 0.1, true, true],
+	["Suspension of belief!", 0.1, true, true],
+	[". . .", 0.1, true, true],
+	["No no no no no nonnoononononono", 0.02, true, true],
+	["No, wait, wait", 0.1, true, true],
+	["I still have more!", 0.1, true, true],
+	["Look!", 0.1, true, true],
+	["Your levels!", 0.1, true, true]
+],
+"pre_wave_demo3" : [
+	["Now we're getting it!", 0.1, true, true],
+	["See?", 0.1, true, true],
+	["That's so fun!", 0.1, true, true],
+	["I'M ", 0.5, true, false],
+	["so fun!", 0.1, false, true],
+	["SO FUN", 0.5, true, true],
+	["More?", 0.1, true, true],
+	["You'll play more!", 0.15, true, true],
+	["More!", 0.2, true, true],
+	["More for PLAYER", 0.1, true, true],
+	["More PLAYER for me!", 0.1, true, true],
+	["PLAYER FOR ME!", 0.1, true, true],
+],
+"in_wave3" : [
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true]
 ],
 "boss_dialog" : [
-	["I'm not going down without a fight.", 0.2, true, true],
-	["So you better give me all you've got!", 0.1, true, true]
+	["Is this not enough for you?", 0.2, true, true],
+	["PLAYER says more?", 0.1, true, true],
+	["PLAYER wants more?!", 0.1, true, true],
+	["PLAYER NEEDS MORE!", 0.1, true, true],
+	["PLAYER", 0.5, true, true],
+	["NEEDS", 0.5, true, true],
+	["ME", 0.5, true, true],
+	["ME ME ME ME MEMEMEMEME ME ME ME MEEMME", 0.01, true, true],
+	["I WILL GIVE YOU ALL YOU NEED", 0.05, true, true]
 ]
   ,
   "wave1_demo" : [1, ["TopMid", "BottomMid"], 2],
@@ -41,10 +122,34 @@
   "boss_minions" : [1, ["CenterTop", "CenterLeft","BottomRight"], 3]
 ,
   
-  "death" : [
-	["Aww...who's bored now?", 0.1, true, true],
-	["Try again!", 0.1, true, true],
-	[" ", 1, true, true],
+  "death1" : [
+	["Don't give up now!", 0.15, true, true],
+	["Give it your best!", 0.15, true, true],
+],
+ "death2" : [
+	["That can't be all you got,", 0.15, true, true],
+	["Try again!", 0.15, true, true],
+	["Please don't leave me", 0.05, true, true]
+],
+ "death3" : [
+	["You got it!", 0.1, true, true],
+	["A good story has a few roadblocks!", 0.1, true, true]
+],
+ "death4" : [
+	["Keep playing!", 0.1, true, true],
+	["Don't leave!", 0.1, true, true],
+	["This is what you wanted!", 0.1, true, true]
+],
+ "death5" : [
+	["Don't leave me!", 0.1, true, true],
+	["You love playing with me!", 0.1, true, true],
+	["Don't leave!", 0.1, true, true]
+],
+ "death6" : [
+	["DON'T GO KEEP PLAYING", 0.1, true, true],
+	["PLAYER DON'T LEAVE", 0.1, true, true],
+	["PLAY WITH ME", 0.1, true, true],
+	["DON'T LEAVE ME", 0.1, true, true]
 ],
  "post_boss" : [
 	["...", 0.6, true, true],

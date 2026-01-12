@@ -170,7 +170,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 min_value = 10.0
 step = 10.0
-value = 100.0
+value = 30.0
 tick_count = 10
 ticks_position = 3
 

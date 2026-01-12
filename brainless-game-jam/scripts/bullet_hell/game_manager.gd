@@ -15,6 +15,7 @@ var double_boss; # will spawn on top of the boss in final stage
 var boss_unbeaten : bool = true
 var not_boss_stage :bool = false
 var count :int = 0
+var deaths : int = 1
 signal wave_complete
 
 @onready var blip_sound = %blip
@@ -33,7 +34,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().call_group("bullets", "queue_free")
 		get_tree().call_group("player", "queue_free")
 		get_tree().call_group("enemies", "queue_free")
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/final_menu.tscn")
 			
 	if event.is_action_pressed("skip_text"):
 		skip = true
@@ -52,49 +53,33 @@ func _ready() -> void:
 	dialogue_script = JSON.parse_string(text)
 	
 	await main_text.add_text_chunk(dialogue_script["intro_demo"])
-	
-	if !skip:
-		await main_text.add_text_chunk(dialogue_script["spawn_box_demo"])
-	#
+	await get_tree().create_timer(1.5).timeout	
+	await main_text.add_text_chunk(dialogue_script["spawn_box_demo"])
+	await get_tree().create_timer(1.5).timeout
 	await spawn_player()
-#
-	if !skip:
-		await main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
-	#
+	await get_tree().create_timer(2).timeout
+	await main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
+	await get_tree().create_timer(1).timeout
 	await walls.scale(boundary_box, 2.5, 2.5, 2.0)
 	first_stage.play()
-	
-	
+	await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
 	await spawn_wave("wave1_demo") 
-	
-	#
 	await on_wave_complete()
-	
-	if !skip:
-		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
-	#
 	first_stage.stop()
 	second_stage.play()
+	await main_text.add_text_chunk(dialogue_script["pre_wave_demo2"])
 	await walls.scale(boundary_box, 3, 4.0, 2.0)
-	
 	await spawn_wave("wave2_demo")
-	
 	await on_wave_complete()
-	
-	if !skip: 
-		await main_text.add_text_chunk(dialogue_script["pre_wave_demo2"])
-	#
-	await main_text.size(main_text.textHolder, 450, 486.0, 2.0)
+	await main_text.add_text_chunk(dialogue_script["pre_wave_demo3"])
+	await main_text.size(main_text.textHolder, 450, main_text.textHolder.size.y, 2.0)
 	await walls.move_and_scale(boundary_box, 5.0, 4.0,
 		boundary_box.global_position.x - 130, boundary_box.global_position.y, 2.0)
-	
-	
 	await spawn_wave("wave3_demo")
-	#
+	await main_text.add_text_chunk(dialogue_script["in_wave3"])
 	await on_wave_complete()
 	second_stage.stop()
 	boss_music.play()
-	
 #	boss size
 	await main_text.add_text_chunk(dialogue_script["boss_dialog"])
 	walls.move_and_scale(boundary_box, 10.5, 4.5, 
@@ -106,7 +91,7 @@ func _ready() -> void:
 	await spawn_boss(false)
 	
 	while boss.health >= 500: 
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(10).timeout
 		random_wave_gen()
 		switch_boss_state()
 		
@@ -129,6 +114,7 @@ func _ready() -> void:
 #	use two other text sections to "bug" it out, then force quit
 	main_text.add_text_chunk(dialogue_script["intro_demo"])
 	main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
+	await main_text.add_text_chunk(dialogue_script["boss_dialog"])
 	get_tree().quit()
 	
 func random_wave_gen():
@@ -225,8 +211,12 @@ func on_player_death():
 	if !not_boss_stage:
 		get_tree().call_group("bullets", "queue_free")
 		get_tree().call_group("enemies", "queue_free")
-		main_text.add_text_chunk(dialogue_script["death"])
 		spawn_wave(current_wave_name)
+		
+#	cycles through death dialogues per death
+	main_text.add_text_chunk(dialogue_script["death"+str(deaths)])
+	if deaths != 6:
+		deaths += 1
 
 func on_wave_complete():
 	await wave_complete
