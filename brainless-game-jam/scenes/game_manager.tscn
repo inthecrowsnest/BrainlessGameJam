@@ -49,4 +49,3 @@ stream = ExtResource("7_jdad8")
 [node name="SecondStage" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("8_k4jhu")
-volume_db = -15.913

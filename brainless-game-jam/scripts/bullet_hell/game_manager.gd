@@ -73,6 +73,7 @@ func _ready() -> void:
 	if !skip:
 		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
 	#
+	first_stage.stop()
 	second_stage.play()
 	await walls.scale(boundary_box, 3, 4.0, 2.0)
 	
@@ -91,6 +92,7 @@ func _ready() -> void:
 	await spawn_wave("wave3_demo")
 	#
 	await on_wave_complete()
+	second_stage.stop()
 	boss_music.play()
 	
 #	boss size
