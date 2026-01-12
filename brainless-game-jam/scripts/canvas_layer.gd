@@ -5,6 +5,9 @@ extends CanvasLayer
 
 var scene : PackedScene = preload("res://scenes/game_manager.tscn")
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("skip_text"):
+		Global.skip = true
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_packed(scene)

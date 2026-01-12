@@ -9,7 +9,7 @@ var dialogue_script : Dictionary
 var current_wave : int;
 var current_wave_name : String;
 var walls;
-var skip = false;
+@onready var skip = Global.skip;
 var boss;
 var double_boss; # will spawn on top of the boss in final stage
 var boss_unbeaten : bool = true
@@ -52,36 +52,51 @@ func _ready() -> void:
 	var text = FileAccess.get_file_as_string(data) 
 	dialogue_script = JSON.parse_string(text)
 	
-	await main_text.add_text_chunk(dialogue_script["intro_demo"])
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["intro_demo"])
 	await get_tree().create_timer(1.5).timeout	
-	await main_text.add_text_chunk(dialogue_script["spawn_box_demo"])
+	
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["spawn_box_demo"])
 	await get_tree().create_timer(1.5).timeout
 	await spawn_player()
 	await get_tree().create_timer(2).timeout
-	await main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
+	
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
 	await get_tree().create_timer(1).timeout
 	await walls.scale(boundary_box, 2.5, 2.5, 2.0)
 	first_stage.play()
-	await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
+	
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
 	await spawn_wave("wave1_demo") 
 	await on_wave_complete()
 	first_stage.stop()
 	second_stage.play()
-	await main_text.add_text_chunk(dialogue_script["pre_wave_demo2"])
+	
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["pre_wave_demo2"])
 	await walls.scale(boundary_box, 3, 4.0, 2.0)
 	await spawn_wave("wave2_demo")
 	await on_wave_complete()
-	await main_text.add_text_chunk(dialogue_script["pre_wave_demo3"])
+	
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["pre_wave_demo3"])
 	await main_text.size(main_text.textHolder, 450, main_text.textHolder.size.y, 2.0)
 	await walls.move_and_scale(boundary_box, 5.0, 4.0,
 		boundary_box.global_position.x - 130, boundary_box.global_position.y, 2.0)
 	await spawn_wave("wave3_demo")
-	await main_text.add_text_chunk(dialogue_script["in_wave3"])
+	
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["in_wave3"])
 	await on_wave_complete()
 	second_stage.stop()
 	boss_music.play()
 #	boss size
-	await main_text.add_text_chunk(dialogue_script["boss_dialog"])
+
+	if !skip:
+		await main_text.add_text_chunk(dialogue_script["boss_dialog"])
 	walls.move_and_scale(boundary_box, 10.5, 4.5, 
 	boundary_box.global_position.x - 250, boundary_box.global_position.y + 10, 2.0)
 	await main_text.size(main_text.textHolder, 0, 486.0, 2.0)
@@ -102,7 +117,10 @@ func _ready() -> void:
 	await get_tree().create_timer(15).timeout
 	boss.process_mode = boss.PROCESS_MODE_DISABLED # disable boss
 	double_boss.process_mode = boss.PROCESS_MODE_DISABLED # disable doubled boss
-  
+	
+	get_tree().call_group("enemies", "queue_free")
+	get_tree().call_group("bullets", "queue_free")  
+
 	main_text.z_index = -1
 	main_text.position.x += 50
 	main_text.position.y += 50
@@ -214,9 +232,10 @@ func on_player_death():
 		spawn_wave(current_wave_name)
 		
 #	cycles through death dialogues per death
-	main_text.add_text_chunk(dialogue_script["death"+str(deaths)])
-	if deaths != 6:
-		deaths += 1
+	if !boss_unbeaten:
+		main_text.add_text_chunk(dialogue_script["death"+str(deaths)])
+		if deaths != 6:
+			deaths += 1
 
 func on_wave_complete():
 	await wave_complete
