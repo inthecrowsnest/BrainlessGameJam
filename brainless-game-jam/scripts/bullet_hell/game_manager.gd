@@ -97,7 +97,7 @@ func _ready() -> void:
 	await main_text.add_text_chunk(dialogue_script["boss_dialog"])
 	walls.move_and_scale(boundary_box, 10.5, 4.5, 
 	boundary_box.global_position.x - 250, boundary_box.global_position.y + 10, 2.0)
-  await main_text.size(main_text.textHolder, 0, 486.0, 2.0)
+	await main_text.size(main_text.textHolder, 0, 486.0, 2.0)
 	main_text.visible = false
 	
 	not_boss_stage = true
@@ -116,7 +116,7 @@ func _ready() -> void:
 	boss.process_mode = boss.PROCESS_MODE_DISABLED # disable boss
 	double_boss.process_mode = boss.PROCESS_MODE_DISABLED # disable doubled boss
   
-  main_text.z_index = -1
+	main_text.z_index = -1
 	main_text.position.x += 50
 	main_text.position.y += 50
 	await main_text.size(main_text.textHolder, 1000, 425, 0.5)
