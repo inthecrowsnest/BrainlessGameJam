@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgbxshykbgxn8"]
+[gd_scene load_steps=7 format=3 uid="uid://cgbxshykbgxn8"]
 
 [ext_resource type="Script" uid="uid://113elroklowj" path="res://player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://wmmja71n7qtc" path="res://assets/sprites/Brainless_Player.png" id="2_g2els"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(128, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(127, 129)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
@@ -24,7 +27,7 @@ rotation = 1.5707964
 scale = Vector2(0.4101562, 0.40283203)
 texture = ExtResource("2_g2els")
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_qhqgy")
 
@@ -42,3 +45,7 @@ one_shot = true
 unique_name_in_owner = true
 stream = ExtResource("4_dqkch")
 pitch_scale = 2.89
+
+[node name="WallBox" type="CollisionShape2D" parent="." groups=["player_walls"]]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_dqkch")

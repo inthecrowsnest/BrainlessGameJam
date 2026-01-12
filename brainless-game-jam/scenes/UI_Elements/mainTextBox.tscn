@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://ckofuhb827yne" path="res://assets/Geo-Regular.ttf" id="2_sqi7m"]
 
 [node name="TextBox" type="Node2D"]
+visible = false
 script = ExtResource("1_otbjq")
 
 [node name="Control" type="Control" parent="."]

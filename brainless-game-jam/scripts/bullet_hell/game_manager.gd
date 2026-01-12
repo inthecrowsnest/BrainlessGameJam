@@ -4,6 +4,7 @@ extends Node
 @onready var boundary_box: Node2D = %BoundaryBox
 @onready var main_text: Node2D = %TextBox
 @onready var player = preload("res://scenes/player.tscn")
+@onready var textbox = preload("res://scenes/UI_Elements/mainTextBox.tscn")
 var dialogue_script : Dictionary
 var current_wave : int;
 var current_wave_name : String;
@@ -44,6 +45,8 @@ func _ready() -> void:
 	blip_sound.volume_db = Global.volume
 	walls = boundary_box.find_child("Walls")
 	boundary_box.visible = false
+#	make main text invis by default and visible on ready to allow for ez spawning later
+	main_text.visible = true
 	var data = "res://json/scripting.json"
 	var text = FileAccess.get_file_as_string(data) 
 	dialogue_script = JSON.parse_string(text)
@@ -66,7 +69,7 @@ func _ready() -> void:
 	
 	#
 	await on_wave_complete()
-	#
+	
 	if !skip:
 		await main_text.add_text_chunk(dialogue_script["pre_wave_demo"])
 	#
@@ -76,7 +79,7 @@ func _ready() -> void:
 	await spawn_wave("wave2_demo")
 	
 	await on_wave_complete()
-	#
+	
 	if !skip: 
 		await main_text.add_text_chunk(dialogue_script["pre_wave_demo2"])
 	#
@@ -92,12 +95,13 @@ func _ready() -> void:
 	
 #	boss size
 	await main_text.add_text_chunk(dialogue_script["boss_dialog"])
-	await walls.move_and_scale(boundary_box, 10.5, 4.5, 
+	walls.move_and_scale(boundary_box, 10.5, 4.5, 
 	boundary_box.global_position.x - 250, boundary_box.global_position.y + 10, 2.0)
-	main_text.queue_free()
+  await main_text.size(main_text.textHolder, 0, 486.0, 2.0)
+	main_text.visible = false
+	
 	not_boss_stage = true
 	await spawn_boss(false)
-	
 	
 	while boss.health >= 500: 
 		await get_tree().create_timer(5).timeout
@@ -111,6 +115,19 @@ func _ready() -> void:
 	await get_tree().create_timer(15).timeout
 	boss.process_mode = boss.PROCESS_MODE_DISABLED # disable boss
 	double_boss.process_mode = boss.PROCESS_MODE_DISABLED # disable doubled boss
+  
+  main_text.z_index = -1
+	main_text.position.x += 50
+	main_text.position.y += 50
+	await main_text.size(main_text.textHolder, 1000, 425, 0.5)
+	main_text.textbox.text = ""
+	main_text.visible = true
+	await main_text.add_text_chunk(dialogue_script["post_boss"])
+	
+#	use two other text sections to "bug" it out, then force quit
+	main_text.add_text_chunk(dialogue_script["intro_demo"])
+	main_text.add_text_chunk(dialogue_script["spawn_en_demo"])
+	get_tree().quit()
 	
 func random_wave_gen():
 	count += 1
@@ -138,6 +155,11 @@ func spawn_player():
 	spawned_player.scale = Vector2(0.2, 0.2)
 	spawned_player.connect("player_death", on_player_death)
 	get_tree().current_scene.add_child.call_deferred(spawned_player)
+	
+#	will disable the ability for the player to take damage temporarily on respawn
+	spawned_player.invinc = true
+	await get_tree().create_timer(0.3).timeout
+	spawned_player.invinc = false
 
 func spawn_boss(final: bool):
 	current_wave_name = "boss"
